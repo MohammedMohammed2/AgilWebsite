@@ -34,8 +34,7 @@
 
 .dropdown {
     position: absolute;
-    top: 10px;
-    left: 10px; 
+    margin-left: 50%;
     background-color: #252627;
     border-radius: 8px;
     padding: 10px;
