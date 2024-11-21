@@ -21,6 +21,14 @@
     align-items: center;
     padding: 0 20px;
 }
+.coolTitleContainer{
+    background-color: #333;;
+    display: flex;
+    justify-content: center;
+}
+.coolFont{
+    font-family: ;
+}
 
 .logo a {
     color: #fff;
