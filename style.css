@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css?family=Sofia');
 * {
     margin: 0;
     padding: 0;
@@ -27,7 +27,7 @@
     justify-content: center;
 }
 .coolFont{
-    font-family: ;
+    font-family: "Sofia";
 }
 
 .logo a {
