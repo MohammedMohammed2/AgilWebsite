@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
-    <script src="script.js"></script> 
 </head>
 <header class="header">
     <div class="header-container">
@@ -48,50 +47,29 @@
 </header>
 <body>
     <div class="main-content">
+        <!-- Change section class to its own -->
         <section class="featured-products">
-            <h2>Featured Products</h2>
-            <div class="product-grid">
-                <div class="product-item">
-                    <img src="product1.jpg" alt="Product 1">
-                    <p>Product #1</p>
-                </div>
-                <div class="product-item">
-                    <img src="product2.jpg" alt="Product 2">
-                    <p>Product #2</p>
-                </div>
-                <div class="product-item">
-                    <img src="product3.jpg" alt="Product 3">
-                    <p>Product #3</p>
-                </div>
-            </div>
-        </section>
-        <section class="news-section">
-            <h2>Latest Products</h2>
-            <div class="news-grid">
-                <div class="news-item">
-                    <img src="product4.jpg" alt="Product 4">
-                    <div class="news-content">
-                        <h3><a href="#">Stylish Winter Jacket</a></h3>
-                        <p>A trendy winter jacket designed for comfort and warmth during the colder months.</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <img src="product5.jpg" alt="Product 5">
-                    <div class="news-content">
-                        <h3><a href="#">Elegant Leather Bag</a></h3>
-                        <p>A premium leather bag with a sleek design, perfect for any occasion.</p>
-                    </div>
-                </div>
-                <div class="news-item">
-                    <img src="product6.jpg" alt="Product 6">
-                    <div class="news-content">
-                        <h3><a href="#">Modern Sneakers</a></h3>
-                        <p>Comfortable and stylish sneakers that combine fashion and functionality.</p>
-                    </div>
-                </div>
-            </div>
+
+
+            <h1>Create new product</h1><br>
+            <form>
+                <label for="title">Product title</label><br>
+                <input type="text" id="title" name="title" required="true"><br>
+                <label for="description">Description</label><br>
+                <input type="text" id="description" name="description" size="35"><br>
+                <label for="price">Price (sek)</label><br>
+                <input type="number" id="price" name="price" required="true"><br>
+                <label for="file">Upload image</label><br>
+                <input type="file" id="imageInput"><br><br>
+                <button type="submit" id="addProductBtn">Add product</button>
+            </form>
+
+
         </section>
     </div>
+    </div>
+    
+    <script type="module" src="./js/main.js"></script> 
 </body>
 <footer class="footer">
     <div class="footer-container">
