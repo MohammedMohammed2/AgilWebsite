@@ -141,16 +141,22 @@ html, body {
     flex-direction: column; 
 }
 
+.featured-products,
+.news-section {
+    width: 100%; 
+}
 .main-content {
     flex: 1; 
+    flex-direction: column;
+    gap: 20px; 
     background-color: #2a2a2a; 
     color: #ddd; 
-    display: flex;
     justify-content: center; 
     align-items: center;
     padding: 20px;
     font-size: 16px; 
 }
+
 .main-content a {
     color: #9e4c4c; 
     text-decoration: none; 
@@ -225,6 +231,76 @@ html, body {
     padding: 40px 0;
     font-size: 14px;
     width: 100%; 
+}
+
+.news-section {
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    background-color: #444444;
+    margin-top: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.news-section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color:#fff;
+}
+
+.news-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.news-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.news-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 15px;
+}
+
+.news-content h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+    color: #222;
+}
+
+.news-content h3 a {
+    text-decoration: none;
+    color: #007BFF;
+    transition: color 0.3s ease;
+}
+
+.news-content h3 a:hover {
+    color: #0056b3;
+}
+
+.news-content p {
+    font-size: 0.9rem;
+    color: #555;
 }
 
 .footer-container {
