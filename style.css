@@ -190,6 +190,10 @@ html, body {
     margin-bottom: 1rem;
 }
 
+.contact-container {
+    display: flex;
+}
+
 .product-grid {
     display: flex;
     gap: 20px;
