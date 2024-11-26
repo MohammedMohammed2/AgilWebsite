@@ -276,3 +276,7 @@ html, body {
 .footer-bottom p {
     margin: 0;
 }
+
+#description {
+    line-height: 100px;
+}
