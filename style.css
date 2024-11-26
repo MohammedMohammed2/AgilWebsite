@@ -192,6 +192,8 @@ html, body {
 
 .contact-container {
     display: flex;
+    justify-content: center;
+
 }
 
 .product-grid {
@@ -239,7 +241,6 @@ html, body {
 
 .news-section {
     width: 100%;
-    max-width: 1200px;
     padding: 20px;
     background-color: #444444;
     margin-top: 20px;
