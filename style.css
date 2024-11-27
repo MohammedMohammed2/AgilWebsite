@@ -344,6 +344,93 @@ html, body {
     color: #555;
 }
 
+/* Scoped styles for the login page */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #2a2a2a;
+    color: #fff;
+    font-family: Arial, sans-serif;
+}
+
+.login-card {
+    background-color: #333;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    font-family: "Sofia", cursive;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-form .form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.login-form .form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.login-form .form-group input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #555;
+    border-radius: 5px;
+    background-color: #444;
+    color: #fff;
+}
+
+.login-form .form-group input:focus {
+    border-color: #9e4c4c;
+    outline: none;
+}
+
+.loginBtnPage {
+    padding: 10px 15px;
+    background-color: #9e4c4c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #7a3838;
+}
+
+.login-button a {
+    color: #fff;
+    background-color: #333;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login-button a:hover {
+    background-color: #1e2731;
+    color: #9e4c4c;
+}
 .footer-container {
     display: flex;
     justify-content: space-between;
