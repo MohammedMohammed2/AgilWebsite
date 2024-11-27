@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Category to Menu</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./js/createCategory.js" type="module" defer></script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <h1 class="coolFont">coolfashion</h1>
+            </div>
+            <nav class="dropdown">
+                <ul>
+                    <li><a href="/index.html">Home</a></li>
+                    <li><a href="/secondHand.html">Second Hand</a></li>
+                    <li><a href="/contactUs.html">Contact</a></li>
+                    <li>
+                        <a href="#" class="ProductsDropdown-toggle">Products</a>
+                        <ul class="dropdown">
+                            <li>
+                                <a href="#" class="Mendropdown-toggle">Men</a>
+                                <ul class="dropdown-menu" id="men-menu">
+                                    <li><a href="#" class="dropdown-item">Men Product#1</a></li>
+                                    <li><a href="#" class="dropdown-item">Men Product#2</a></li>
+                                    <li><a href="#" class="dropdown-item">men Product#3</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#" class="WomenDropdown-toggle">Women</a>
+                                <ul class="dropdown-menu" id="women-menu">
+                                    <li><a href="#" class="dropdown-item">Women Product#1</a></li>
+                                    <li><a href="#" class="dropdown-item">Women Product#2</a></li>
+                                    <li><a href="#" class="dropdown-item">women Product#3</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="/adminAddCategory.html">Add Category</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="main-content">
+            <h1>Add New Product Category</h1>
+            <form id="add-category-form" class="add-category-form-container">
+                <div class="add-category-form-group">
+                    <label for="category-type">Choose Category:</label>
+                    <select id="category-type" name="category-type" class="add-category-select" required>
+                        <option value="men">Men</option>
+                        <option value="women">Women</option>
+                    </select>
+                </div>
+                <div class="add-category-form-group">
+                    <label for="category-name">Product Name:</label>
+                    <input type="text" id="category-name" name="category-name" class="add-category-input" required placeholder="Enter product name">
+                </div>
+                <div class="add-category-form-group">
+                    <button type="button" id="add-category-button" class="add-category-button">Add Product</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-container">
+            <p>&copy; 2024 coolfashion. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
