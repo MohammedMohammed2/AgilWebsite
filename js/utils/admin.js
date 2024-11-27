@@ -21,6 +21,10 @@ export function createProduct() {
         let productTitle = document.getElementById("title").value;
         let productDescription = document.getElementById("description").value;
         let productPrice = document.getElementById("price").value;
+        let productCategory = document.getElementById("category").value;
+
+        console.log(productCategory);
+        
 
         let productsList = localStorage.getItem('products');
         productsList = productsList ? JSON.parse(productsList) : {}; // Parse existing or start with empty object
@@ -32,6 +36,7 @@ export function createProduct() {
             title: productTitle,
             description: productDescription,
             price: productPrice,
+            category: productCategory,
             image: fileName
         };
 
