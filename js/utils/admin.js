@@ -1,3 +1,6 @@
+import { getProductsList } from "./utils.js";
+
+
 // Creates product based on form input, saves product in local storage
 export function createProduct() {
     const imageInput = document.getElementById('imageInput');
@@ -5,9 +8,10 @@ export function createProduct() {
 
     // Change relativePath 
     const relativePath = "./images/";
+    let fileName = "";
 
     imageInput.addEventListener('change', () => {
-        let fileName = document.getElementById("imageInput").value;
+        fileName = document.getElementById("imageInput").value;
         fileName = fileName.replace(/C:\\fakepath\\/, relativePath);
     })
 

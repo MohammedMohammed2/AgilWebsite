@@ -47,34 +47,18 @@
 </header>
 <body>
     <div class="main-content">
-        <!-- Change section class to its own -->
-        <section class="create-product">
-            <h1>Create new product</h1><br>
-            <form id="productForm">
-                <label for="title">Product title</label>
-                <input type="text" id="title" name="title" required="true">
-                <label for="description">Description</label>
-                <textarea id="description" name="description" required="true"></textarea>
-                <label for="price">Price (sek)</label>
-                <input type="number" id="price" name="price" required="true">
-                <label for="file">Upload image</label>
-                <input type="file" id="imageInput">
-                <label for="file">Upload image</label>
-                <input type="file" id="imageInput">
-                <label for="file">Upload image</label>
-                <input type="file" id="imageInput">
-                <label for="category">Category</label>
-                <select id="category" name="category" required="true">
-                    <option value="jeans">Jeans</option>
-                    <option value="T-shirt">T-shirt</option>
-                </select>
-                <button type="button" id="addProductBtn">Add product</button>
-            </form>
+        <section class="added-products">
+            <h2>Created products</h2>
+            <div class="product-grid">
+                
+                <!-- Content is populated through Javascript -->
+
+            </div>
         </section>
     </div>
     </div>
-    
-    <script type="module" src="./js/createProduct.js"></script> 
+
+    <script type="module" src="./js/showProducts.js"></script>
 </body>
 <footer class="footer">
     <div class="footer-container">
