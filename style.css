@@ -140,13 +140,29 @@ html, body {
     display: flex;
     flex-direction: column; 
 }
+#login-btn:hover{
+    color:black;
+    border-color:white;
+    background-color: white;
+    cursor:pointer
+}
+#login-btn{
+    margin-left:10px;
+    justify-content: center;
+    display: flex;
+    border-color: #9a8d8d;
+    border-radius: 5px;
+    width: 3rem;
+    color: white;
+    background-color: #9a8d8d;
+}
 
 .featured-products,
 .news-section {
     width: 100%; 
 }
 .main-content img:hover{
-    cursor: grab;
+    cursor: pointer;
 }
 .main-content {
     flex: 1; 
