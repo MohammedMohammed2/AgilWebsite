@@ -1,4 +1,3 @@
-import { getCategoryProductsJson } from "./getCategorypictures.js";
 import { createCategoryPage } from "./getCategorypictures.js";
 //html element
 const menDropdown = document.getElementById("men-menu")
@@ -14,5 +13,5 @@ womenDropdown.addEventListener("click", (Event) => {
 })
 
 function populateCategory(Event) {
-    createCategoryPage(Event,mainContentContainer)
+    createCategoryPage(Event, mainContentContainer)
 }

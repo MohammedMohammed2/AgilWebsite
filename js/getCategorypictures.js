@@ -1,6 +1,4 @@
-export function getCategoryProductsJson(productsCategory) {
-    return localStorage.getItem(productsCategory);
-}
+
 export function createCategoryPage(Event, mainContentContainer) {
     mainContentContainer.innerHTML = "";
     const newContainer = document.createElement("div")
@@ -15,12 +13,52 @@ export function createCategoryPage(Event, mainContentContainer) {
 
     mainContentContainer.insertBefore(newContainer, null);
 
-    const json = getCategoryProductsJson(title);
+    let productsList = localStorage.getItem(target);
+    console.log(target);
+    productsList = productsList ? JSON.parse(productsList) : {};
+    console.log("productlist " + productsList)
     const productGrid = document.createElement("div")
     productGrid.classList.add("product-grid")
-    if (json === null) {
+    //saveProductTestingPurpose(productsList);
+    if (Object.keys(productsList).length == 0) {
+        console.log("hello?");
         createFakePorducts(productGrid, mainContentContainer)
     }
+    else {
+        console.log(productsList);
+        for (const key in productsList) {
+            console.log(key);
+            const product = productsList[key];
+
+            const productItem = document.createElement("div")
+            const productImg = document.createElement("img");
+            const productTitle = document.createElement("p");
+            const productSize = document.createElement("p");
+            const productPrice = document.createElement("p");
+
+            productItem.classList.add("product-item")
+            productImg.src = product.img;
+            productImg.alt = "product " + key;
+            productTitle.innerText = product.title;
+            productSize.innerText = "size: " + product.size;
+            productPrice.innerText = "price:" + product.price;
+
+            productItem.append(productImg, productTitle, productSize, productPrice);
+            productGrid.append(productItem);
+        }
+        mainContentContainer.append(productGrid);
+
+    }
+}
+function saveProductTestingPurpose(productsList) {
+    let nextProductId = Object.keys(productsList).length + 1;
+    productsList[nextProductId] = {
+        title: "Sam",
+        price: "10",
+        size: "M",
+        img: "sam.jpg"
+    }
+    localStorage.setItem("Men Product#1", JSON.stringify(productsList));
 }
 function createFakePorducts(productGrid, mainContentContainer) {
     for (let i = 0; i < 5; i++) {
@@ -28,13 +66,16 @@ function createFakePorducts(productGrid, mainContentContainer) {
         const productImg = document.createElement("img");
         const productTitle = document.createElement("p");
         const productSize = document.createElement("p");
-        const productPrize = document.createElement("p");
+        const productPrice = document.createElement("p");
 
+        productItem.classList.add("product-item")
         productTitle.innerText = "product " + i;
         productSize.innerText = "size:"
-        productPrize.innerText = "price:"
+        productPrice.innerText = "price:"
         productImg.src = "product" + i;
         productImg.alt = "product" + i;
-        productItem.append()
+        productItem.append(productImg, productTitle, productSize, productPrice);
+        productGrid.append(productItem);
+        mainContentContainer.append(productGrid);
     }
 }
