@@ -1,4 +1,4 @@
-
+//clears the page,adds the category title to the page and shows products for the category if there is any
 export function createCategoryPage(Event, mainContentContainer) {
     mainContentContainer.innerHTML = "";
     const newContainer = document.createElement("div")
@@ -50,6 +50,7 @@ export function createCategoryPage(Event, mainContentContainer) {
 
     }
 }
+//Testing if there is a product saved
 function saveProductTestingPurpose(productsList) {
     let nextProductId = Object.keys(productsList).length + 1;
     productsList[nextProductId] = {
@@ -60,6 +61,7 @@ function saveProductTestingPurpose(productsList) {
     }
     localStorage.setItem("Men Product#1", JSON.stringify(productsList));
 }
+//creates fake products, and shows them
 function createFakePorducts(productGrid, mainContentContainer) {
     for (let i = 0; i < 5; i++) {
         const productItem = document.createElement("div")
