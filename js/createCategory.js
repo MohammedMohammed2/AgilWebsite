@@ -1,32 +1,66 @@
-document.getElementById('add-category-button').addEventListener('click', () => {
-    const categoryType = document.getElementById('category-type').value;
-    const categoryName = document.getElementById('category-name').value;
+document.addEventListener('DOMContentLoaded', () => {
+    // Load categories from localStorage on page load
+    loadCategoriesFromStorage();
 
-    // Check if the product name is empty
-    if (categoryName.trim() === '') {
-        alert('Please enter a valid product name.');
-        return;
-    }
+    document.getElementById('add-category-button').addEventListener('click', () => {
+        const categoryType = document.getElementById('category-type').value;
+        const categoryName = document.getElementById('category-name').value;
 
-    // Select the correct menu based on category
-    const menuId = categoryType === 'men' ? 'men-menu' : 'women-menu';
-    const menu = document.getElementById(menuId);
+        if (categoryName.trim() === '') {
+            alert('Please enter a valid product name.');
+            return;
+        }
 
-    // Create new product item
-    const newMenuItem = document.createElement('li');
-    const newLink = document.createElement('a');
-    newLink.href = '#';
-    newLink.className = 'dropdown-item';
-    newLink.textContent = categoryName;
+        const menuId = categoryType === 'men' ? 'men-menu' : 'women-menu';
+        const menu = document.getElementById(menuId);
 
-    // Add product to menu
-    newMenuItem.appendChild(newLink);
-    menu.appendChild(newMenuItem);
+        const newMenuItem = document.createElement('li');
+        const newLink = document.createElement('a');
+        newLink.href = '#';
+        newLink.className = 'dropdown-item';
+        newLink.textContent = categoryName;
 
-    // Reset form fields
-    document.getElementById('add-category-form').reset();
+        newMenuItem.appendChild(newLink);
+        menu.appendChild(newMenuItem);
 
-    // Show success message
-    alert(`Successfully added "${categoryName}" to the ${categoryType} category.`);
+        // Save the new category
+        saveCategoryToStorage(categoryType, categoryName);
+
+        document.getElementById('add-category-form').reset();
+        alert(`Successfully added "${categoryName}" to the ${categoryType} category.`);
+    });
 });
+
+// Save a new category to localStorage
+function saveCategoryToStorage(type, name) {
+    const storageKey = type === 'men' ? 'menCategories' : 'womenCategories';
+    const categories = JSON.parse(localStorage.getItem(storageKey)) || [];
+    categories.push(name);
+    localStorage.setItem(storageKey, JSON.stringify(categories));
+}
+
+// Load categories from localStorage
+function loadCategoriesFromStorage() {
+    const menCategories = JSON.parse(localStorage.getItem('menCategories')) || [];
+    const womenCategories = JSON.parse(localStorage.getItem('womenCategories')) || [];
+
+    const menMenu = document.getElementById('men-menu');
+    const womenMenu = document.getElementById('women-menu');
+
+    menCategories.forEach(name => addMenuItem(menMenu, name));
+    womenCategories.forEach(name => addMenuItem(womenMenu, name));
+}
+
+// Add a menu item to a dropdown
+function addMenuItem(menu, name) {
+    const menuItem = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = '#';
+    link.className = 'dropdown-item';
+    link.textContent = name;
+
+    menuItem.appendChild(link);
+    menu.appendChild(menuItem);
+}
+
 
