@@ -20,11 +20,30 @@ export function showAddedProducts() {
         const productPrice = document.createElement("p");
         productPrice.textContent = productsList[product].price;
 
-        const proudctImage = document.createElement("img");
-        proudctImage.src = productsList[product].image;
-        proudctImage.alt = productsList[product].title;
+        if (productsList[product].imageOne != null) {
+            const proudctImage = document.createElement("img");
+            proudctImage.src = productsList[product].imageOne;
+            proudctImage.alt = productsList[product].title;
 
-        productDiv.append(proudctImage);
+            productDiv.append(proudctImage);
+        }
+
+        if (productsList[product].imageTwo != null) {
+            const proudctImage = document.createElement("img");
+            proudctImage.src = productsList[product].imageTwo;
+            proudctImage.alt = productsList[product].title;
+
+            productDiv.append(proudctImage);
+        }
+
+        if (productsList[product].imageThree != null) {
+            const proudctImage = document.createElement("img");
+            proudctImage.src = productsList[product].imageThree;
+            proudctImage.alt = productsList[product].title;
+
+            productDiv.append(proudctImage);
+        }
+
         productDiv.append(productTitle);
         productGrid.prepend(productDiv);
     }
