@@ -3,16 +3,36 @@ import { getProductsList } from "./utils.js";
 
 // Creates product based on form input, saves product in local storage
 export function createProduct() {
-    const imageInput = document.getElementById('imageInput');
+    const imageInputOne = document.getElementById('imageInputOne');
+    const imageInputTwo = document.getElementById('imageInputTwo');
+    const imageInputThree = document.getElementById('imageInputThree');
     const addProductBtn = document.getElementById("addProductBtn");
 
     // Change relativePath 
-    const relativePath = "./images/";
-    let fileName = "";
+    const relativePath = "./images/createProducts/";
+    let fileNameOne = null;
+    let fileNameTwo = null;
+    let fileNameThree = null;
 
-    imageInput.addEventListener('change', () => {
-        fileName = document.getElementById("imageInput").value;
-        fileName = fileName.replace(/C:\\fakepath\\/, relativePath);
+    imageInputOne.addEventListener('change', () => {
+        fileNameOne = document.getElementById("imageInputOne").value;
+        fileNameOne = fileNameOne.replace(/C:\\fakepath\\/, relativePath);
+
+        console.log(fileNameOne);
+    })    
+
+    imageInputTwo.addEventListener('change', () => {
+        fileNameTwo = document.getElementById("imageInputTwo").value;
+        fileNameTwo = fileNameTwo.replace(/C:\\fakepath\\/, relativePath);
+        
+        console.log(fileNameTwo);
+    })
+
+    imageInputThree.addEventListener('change', () => {
+        fileNameThree = document.getElementById("imageInputThree").value;
+        fileNameThree = fileNameThree.replace(/C:\\fakepath\\/, relativePath);
+
+        console.log(fileNameTwo);
     })
 
     addProductBtn.addEventListener('click', (event) => {
@@ -37,7 +57,9 @@ export function createProduct() {
             description: productDescription,
             price: productPrice,
             category: productCategory,
-            image: fileName
+            imageOne: fileNameOne,
+            imageTwo: fileNameTwo,
+            imageThree: fileNameThree
         };
 
          localStorage.setItem('products', JSON.stringify(productsList));

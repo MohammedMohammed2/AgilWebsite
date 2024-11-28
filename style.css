@@ -582,3 +582,27 @@ label {
 #description {
     height: 10rem;
 }
+
+.category-section {
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-item {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 25rem;
+    color: #333;
+}
+
+.category-image {
+    width: 25%;
+    height: 25%;;
+}
