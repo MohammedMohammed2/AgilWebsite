@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
+    <script type="module" src="./js/main.js"></script>
 </head>
 <header class="header">
     <div class="header-container">
@@ -24,18 +25,18 @@
                     <ul class="dropdown">
                         <li>
                             <a href="#" class="Mendropdown-toggle">Men</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/men_product1.html" class="dropdown-item">men Products#1</a></li>
-                                <li><a href="/men_product2.html" class="dropdown-item">men Products#2</a></li>
-                                <li><a href="/men_product3.html" class="dropdown-item">men Products#3</a></li>
+                            <ul class="dropdown-menu" id="dropdown-menu-men">
+                                <li><a href="#1" id="men_product1" class="dropdown-item">men Products#1</a></li>
+                                <li><a href="#2" id="men_product2" class="dropdown-item">men Products#2</a></li>
+                                <li><a href="#3" id="men_product3" class="dropdown-item">men Products#3</a></li>
                             </ul>
                         </li>
                         <li>
                             <a href="#" class="WomenDropdown-toggle">Women</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/women_product1.html" class="dropdown-item">women Products#1</a></li>
-                                <li><a href="/women_product2.html" class="dropdown-item">women Products#2</a></li>
-                                <li><a href="/women_product3.html" class="dropdown-item">women Products#3</a></li>
+                            <ul class="dropdown-menu" id="dropdown-menu-women">
+                                <li><a href="#1" id="women_product1" class="dropdown-item">women Products#1</a></li>
+                                <li><a href="#2" id="women_product2" class="dropdown-item">women Products#2</a></li>
+                                <li><a href="#3" id="women_product3" class="dropdown-item">women Products#3</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -48,8 +49,8 @@
     </div>
 </header>
 <body>
-    <div class="main-content">
-        <section class="featured-products">
+    <div class="main-content" id="main-content">
+        <section class="featured-products" id="content-container">
             <h2>Featured Products</h2>
             <div class="product-grid">
                 <div class="product-item">
@@ -66,7 +67,7 @@
                 </div>
             </div>
         </section>
-        <section class="news-section">
+        <section class="news-section" id="news-section">
             <h2>Latest Products</h2>
             <div class="news-grid">
                 <div class="news-item">
