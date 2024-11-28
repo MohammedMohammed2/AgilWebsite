@@ -62,5 +62,3 @@ function addMenuItem(menu, name) {
     menuItem.appendChild(link);
     menu.appendChild(menuItem);
 }
-
-

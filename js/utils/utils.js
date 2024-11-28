@@ -2,6 +2,11 @@ export function getProductsList() {
     return JSON.parse(localStorage.getItem('products'));
 }
 
+export function getProduct(productId) {
+    const productList = getProductsList();
+    return productList[productId];
+}
+
 // Loops through products list and creates html elements for them
 export function showAddedProducts() {
     const productsList = getProductsList();
@@ -18,7 +23,11 @@ export function showAddedProducts() {
         productTitle.textContent = productsList[product].title;
 
         const productPrice = document.createElement("p");
-        productPrice.textContent = productsList[product].price;
+        productPrice.textContent = productsList[product].price + ":-";
+
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.setAttribute("value", product)
 
         if (productsList[product].imageOne != null) {
             const proudctImage = document.createElement("img");
@@ -45,6 +54,12 @@ export function showAddedProducts() {
         }
 
         productDiv.append(productTitle);
+        productDiv.append(productPrice);
+        productDiv.append(editBtn);
         productGrid.prepend(productDiv);
+
+        editBtn.addEventListener("click", () => {
+            location.href="edit_product.html?productId=" + product;
+        })
     }
 }
