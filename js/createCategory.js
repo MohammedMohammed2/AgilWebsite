@@ -29,4 +29,3 @@ document.getElementById('add-category-button').addEventListener('click', () => {
     // Show success message
     alert(`Successfully added "${categoryName}" to the ${categoryType} category.`);
 });
-
