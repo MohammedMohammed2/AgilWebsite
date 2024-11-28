@@ -1,7 +1,27 @@
+import { createCategoryPage } from "./getCategorypictures.js";
 document.addEventListener('DOMContentLoaded', () => {
     // Load categories into menus
     loadCategoriesFromStorage();
 });
+
+const menDropdown = document.getElementById("men-menu")
+const womenDropdown = document.getElementById("women-menu")
+const mainContentContainer = document.getElementById("main-content");
+const loginContentContainer = document.getElementById("login-container");
+
+//empties the page, adds a title of the category in the page
+menDropdown.addEventListener("click", (Event) => {
+    populateCategory(Event);
+})
+womenDropdown.addEventListener("click", (Event) => {
+    populateCategory(Event);
+})
+
+function populateCategory(Event) {
+    loginContentContainer.innerHTML = "";
+    createCategoryPage(Event, mainContentContainer)
+}
+
 
 // Load categories from localStorage and populate menus
 function loadCategoriesFromStorage() {

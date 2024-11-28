@@ -1,3 +1,4 @@
+import { createCategoryPage } from "./getCategorypictures.js";
 document.addEventListener('DOMContentLoaded', () => {
     // Load categories from localStorage on page load
     loadCategoriesFromStorage();
@@ -61,6 +62,24 @@ function addMenuItem(menu, name) {
 
     menuItem.appendChild(link);
     menu.appendChild(menuItem);
+}
+
+
+//html element
+const menDropdown = document.getElementById("men-menu")
+const womenDropdown = document.getElementById("women-menu")
+const mainContentContainer = document.getElementById("main-content");
+
+//empties the page, adds a title of the category in the page
+menDropdown.addEventListener("click", (Event) => {
+    populateCategory(Event);
+})
+womenDropdown.addEventListener("click", (Event) => {
+    populateCategory(Event);
+})
+
+function populateCategory(Event) {
+    createCategoryPage(Event, mainContentContainer)
 }
 
 
