@@ -96,7 +96,7 @@ export function editProduct(product, productId) {
 
     let productsList = getProductsList();
     productsList[productId] = editedProduct;
-    // localStorage.setItem('products', JSON.stringify(productsList));
+    localStorage.setItem('products', JSON.stringify(productsList));
 }
 
 // Category selection should show correct categories based on gender
