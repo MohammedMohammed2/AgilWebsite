@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./admin.css">
     <script  src="./js/main.js" type="module"></script>
     <script type="module"  src="./js/menuLoader.js" defer></script>
 </head>
@@ -19,55 +19,24 @@
                 <li>
                     <a href="/index.html">Home</a>
                 </li>
-                <li><a href="/secondHand.html">Second Hand</a></li>
-                <li><a href="/contactUs.html">Contact</a></li>
+                <li class="menu-item dropdown">
+                    <a href="#" class="menu-link">Admin</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="added_products.html">Products Created</a></li>
+                        <li><a href="adminAddCategory.html">Add New Category</a></li>
+                        <li><a href="/create_product.html">Upload New Product</a></li>
+                        <li><a href="/create_new_product_in_category.html">Create Product in Category</a></li>
+                    </ul>
+                </li>                
                 <li>
                     <a href="#" class="ProductsDropdown-toggle">Products</a>
-                    <ul class="dropdown">
-                        <li>
-                            <a href="#" class="Mendropdown-toggle">Men</a>
-                            <ul class="dropdown-menu" id="men-menu">
-                                <li><a href="#" class="dropdown-item">Men Product#1</a></li>
-                                <li><a href="#" class="dropdown-item">Men Product#2</a></li>
-                                <li><a href="#" class="dropdown-item">men Product#3</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="WomenDropdown-toggle">Women</a>
-                            <ul class="dropdown-menu" id="women-menu">
-                                <li><a href="#" class="dropdown-item">Women Product#1</a></li>
-                                <li><a href="#" class="dropdown-item">Women Product#2</a></li>
-                                <li><a href="#" class="dropdown-item">women Product#3</a></li>
-                            </ul>
-                        </li>
-                    </ul>
                 </li>
-                <li class="login-button">
-                    <a href="/login.html">Login</a>
-                </li>
-            </ul>
         </nav>
     </div>
 </header>
 <body>
     <div class="main-content" id="main-content">
         <h2>Admin Page</h2>
-    </div>
-    <div class="admin-links">
-        <ul>
-            <li>
-                <a href="adminAddCategory.html">add new category</a>
-            </li>
-            <li>
-                <a href="/create_product.html">upload new product</a>
-            </li>
-            <li>
-                <a href="/create_new_product_in_category.html">create new product in category</a>
-            </li>
-            <li>
-                <a href="added_products.html">products created</a>
-            </li>
-        </ul>
     </div>
 </body>
 <footer class="footer">
