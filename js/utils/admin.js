@@ -3,10 +3,14 @@ import { getProductsList, getProduct } from "./utils.js";
 
 // Creates product based on form input, saves product in local storage
 export function createProduct() {
+    const form = document.getElementById('productForm');
     const imageInputOne = document.getElementById('imageInputOne');
     const imageInputTwo = document.getElementById('imageInputTwo');
     const imageInputThree = document.getElementById('imageInputThree');
     const addProductBtn = document.getElementById("addProductBtn");
+
+    const maleOption = document.getElementById("male");
+    const femaleOption = document.getElementById("female");
 
     // Change relativePath 
     const relativePath = "./images/createProducts/";
@@ -29,6 +33,17 @@ export function createProduct() {
         fileNameThree = fileNameThree.replace(/C:\\fakepath\\/, relativePath);
     })
 
+    // Male is selected by default
+    populateCategorySelection("male");
+
+    // Change gender categories on click
+    maleOption.addEventListener('click', () => {
+        populateCategorySelection("male");
+    })
+    femaleOption.addEventListener('click', () => {
+        populateCategorySelection("female");
+    })
+
     addProductBtn.addEventListener('click', (event) => {
         event.preventDefault();
 
@@ -38,13 +53,7 @@ export function createProduct() {
         let productCategory = document.getElementById("category").value;
 
         let productsList = localStorage.getItem('products');
-        productsList = productsList ? JSON.parse(productsList) : {}; // Parse existing or start with empty object
-
-        if (productsList != null) {
-            // Läs productsList
-        } else {
-            // Skapa ett objekt som heter productsList
-        }        
+        productsList = productsList ? JSON.parse(productsList) : {}; // Parse existing or start with empty object      
 
         // Add new product to the object with proper key (using dynamic key)
         let nextProductId = Object.keys(productsList).length + 1; // Find next available key
@@ -59,7 +68,8 @@ export function createProduct() {
             imageThree: fileNameThree
         };
 
-         localStorage.setItem('products', JSON.stringify(productsList));
+        localStorage.setItem('products', JSON.stringify(productsList));
+        form.reset();
     });
 }
 
@@ -86,5 +96,32 @@ export function editProduct(product, productId) {
 
     let productsList = getProductsList();
     productsList[productId] = editedProduct;
-    localStorage.setItem('products', JSON.stringify(productsList));
+    // localStorage.setItem('products', JSON.stringify(productsList));
+}
+
+// Category selection should show correct categories based on gender
+export function populateCategorySelection(gender) {
+    const categorySelection = document.getElementById("category");
+    categorySelection.innerHTML = "";
+    categorySelection.placeholder = "Choose gender first"
+
+    let categories;
+
+    if (gender == "male") {
+        categories = JSON.parse(localStorage.getItem("menCategories"))
+    } else if (gender == "female") {
+        categories = JSON.parse(localStorage.getItem("womenCategories"))
+    }
+
+    for (const category in categories) {
+        const categoryOption = document.createElement("option");
+        categoryOption.value = categories[category];
+        categoryOption.textContent = categories[category];
+        categorySelection.append(categoryOption);
+    }
+}
+
+// Add product to correct category
+export function addCategory() {
+    
 }
