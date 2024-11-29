@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="./style.css">
     <script type="module" src="./js/main.js" defer></script>
     <script type="module"  src="./js/menuLoader.js" defer></script>
+    <script type="module"  src="./js/findProduct.js" defer></script>
+    
 </head>
 <header class="header">
     <div class="header-container">
@@ -97,21 +99,20 @@
         <section class="category-section">
             <h2>Categories</h2>
             <div class="product-grid">
-                <div class="category-item">
-                    <img src="./images/categoryImages/mens-tshirt.jpeg" alt="Product 1" class="category-image">
+                <div class="category-item" data-category="mens-tshirt">
+                    <img src="./images/categoryImages/mens-tshirt.jpeg" alt="Mens T-shirt" class="category-image">
                     <p>Mens T-shirt</p>
                 </div>
-                <div class="category-item">
-                    <img src="./images/categoryImages/women-top.jpeg" alt="Product 1" class="category-image">
+                <div class="category-item" data-category="womens-top">
+                    <img src="./images/categoryImages/women-top.jpeg" alt="Womens Tops" class="category-image">
                     <p>Womens Tops</p>
                 </div>
-                <div class="category-item">
-                    <img src="./images/categoryImages/women-jacket.jpeg" alt="Product 1" class="category-image">
+                <div class="category-item" data-category="womens-jacket">
+                    <img src="./images/categoryImages/women-jacket.jpeg" alt="Womens Jackets" class="category-image">
                     <p>Womens Jackets</p>
                 </div>
             </div>
         </section>
-
     </div>
 </body>
 <footer class="footer">
