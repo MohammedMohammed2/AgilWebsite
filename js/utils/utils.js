@@ -2,6 +2,10 @@ export function getProductsList() {
     return JSON.parse(localStorage.getItem('products'));
 }
 
+export function getCategoriesList(category) {
+    return JSON.parse(localStorage.getItem(category));
+}
+
 export function getProduct(productId) {
     const productList = getProductsList();
     return productList[productId];

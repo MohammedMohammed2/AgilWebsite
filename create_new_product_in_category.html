@@ -7,7 +7,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="./style.css">
     <script type="module" src="./js/main.js" defer></script>
-    <script type="module"  src="./js/menuLoader.js" defer></script>
+    <script type="module" src="./js/menuLoader.js" defer></script>
+    <script type="module" src="./js/createProduct.js" defer></script>
 </head>
 <header class="header">
     <div class="header-container">
@@ -53,19 +54,27 @@
     <div class="main-content" id="main-content">
     </div>
     <div class="admin-create-product-container">
-        <form class="admin-create-product-form">
+        <form class="admin-create-product-form" id="productForm">
             <label>Product Title</label>
-            <input type="text">
+            <input type="text" id="title">
             <label>Price</label>
-            <input type="number">
+            <input type="number" id="price">
             <label>Size</label>
-            <input type="text">
+            <input type="text" id="size">
             <label for="file">Upload image</label>
             <input type="file" id="imageInputOne">
+
+            <div class="checkbox-container">
+                <label for="gender">Male</label>
+                <input type="radio" id="male" name="gender" value="male" checked="checked">
+                <label for="gender">Female</label>
+                <input type="radio" id="female" name="gender" value="female">
+            </div>
+
             <select id="category" name="category">
                 
             </select>
-            <button>Done</button>
+            <button id="addProductBtn">Done</button>
         </form>
     </div>
 </body>

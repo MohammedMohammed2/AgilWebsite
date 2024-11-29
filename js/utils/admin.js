@@ -1,4 +1,4 @@
-import { getProductsList, getProduct } from "./utils.js";
+import { getProductsList, getProduct, getCategoriesList } from "./utils.js";
 
 
 // Creates product based on form input, saves product in local storage
@@ -23,16 +23,6 @@ export function createProduct() {
         fileNameOne = fileNameOne.replace(/C:\\fakepath\\/, relativePath);
     })    
 
-    imageInputTwo.addEventListener('change', () => {
-        fileNameTwo = document.getElementById("imageInputTwo").value;
-        fileNameTwo = fileNameTwo.replace(/C:\\fakepath\\/, relativePath);
-    })
-
-    imageInputThree.addEventListener('change', () => {
-        fileNameThree = document.getElementById("imageInputThree").value;
-        fileNameThree = fileNameThree.replace(/C:\\fakepath\\/, relativePath);
-    })
-
     // Male is selected by default
     populateCategorySelection("male");
 
@@ -48,7 +38,7 @@ export function createProduct() {
         event.preventDefault();
 
         let productTitle = document.getElementById("title").value;
-        let productDescription = document.getElementById("description").value;
+        let productSize = document.getElementById("size").value;
         let productPrice = document.getElementById("price").value;
         let productCategory = document.getElementById("category").value;
 
@@ -60,7 +50,7 @@ export function createProduct() {
 
         productsList[nextProductId] = { 
             title: productTitle,
-            description: productDescription,
+            size: productSize,
             price: productPrice,
             category: productCategory,
             imageOne: fileNameOne,
@@ -68,9 +58,21 @@ export function createProduct() {
             imageThree: fileNameThree
         };
 
+        console.log(productsList);
+
         localStorage.setItem('products', JSON.stringify(productsList));
+        saveToCategory(productCategory, productsList[nextProductId])
+
         form.reset();
     });
+}
+
+export function saveToCategory(category, product) {
+    let categoryList = localStorage.getItem(category);
+    categoryList = categoryList ? JSON.parse(categoryList) : {};
+    let nextProductId = Object.keys(categoryList).length + 1;
+    categoryList[nextProductId] = product;
+    localStorage.setItem(category, JSON.stringify(categoryList));
 }
 
 // Change product information to edited information
@@ -119,9 +121,4 @@ export function populateCategorySelection(gender) {
         categoryOption.textContent = categories[category];
         categorySelection.append(categoryOption);
     }
-}
-
-// Add product to correct category
-export function addCategory() {
-    
 }
