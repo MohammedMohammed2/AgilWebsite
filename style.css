@@ -56,6 +56,15 @@
     gap: 20px;
 }
 
+.admin-create-product-container{
+    background-color: #2a2a2a;
+    display: flex;
+    justify-content: center;
+}
+.admin-create-product-form{
+    display: flex;
+    flex-direction: column;
+}
 
 .dropdown > ul > li > a {
     text-decoration: none;
@@ -145,6 +154,21 @@ html, body {
     border-color:white;
     background-color: white;
     cursor:pointer
+}
+.admin-links{
+    display: flex;
+    justify-content: center;
+    background-color: #2a2a2a; 
+}
+.admin-links a:hover{
+    color: #555;
+    cursor: pointer;
+}
+.admin-links a{
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    background-color: #2a2a2a; 
 }
 #login-btn{
     margin-left:10px;

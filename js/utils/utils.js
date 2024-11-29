@@ -12,7 +12,7 @@ export function showAddedProducts() {
     const productsList = getProductsList();
     console.log(productsList);
     const productGrid = document.getElementsByClassName("product-grid")[0]; // getElementsByClassName returns array, user first result
-    
+
     for (const product in productsList) {
         console.log(productsList[product]);
 
@@ -59,7 +59,9 @@ export function showAddedProducts() {
         productGrid.prepend(productDiv);
 
         editBtn.addEventListener("click", () => {
-            location.href="edit_product.html?productId=" + product;
+            location.href = "edit_product.html?productId=" + product;
         })
     }
 }
+//html
+const menCategoryList = document.getElementsByClassName("dropdown-item");
