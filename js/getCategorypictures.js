@@ -37,11 +37,11 @@ export function createCategoryPage(Event, mainContentContainer) {
             const productPrice = document.createElement("p");
 
             productItem.classList.add("product-item")
-            productImg.src = product.img;
+            productImg.src = "" + product.imageOne;
             productImg.alt = "product " + key;
             productTitle.innerText = product.title;
             productSize.innerText = "size: " + product.size;
-            productPrice.innerText = "price:" + product.price;
+            productPrice.innerText = "price:" + product.price + " kr";
 
             productItem.append(productImg, productTitle, productSize, productPrice);
             productGrid.append(productItem);
@@ -57,7 +57,7 @@ function saveProductTestingPurpose(productsList) {
         title: "Sam",
         price: "10",
         size: "M",
-        img: "sam.jpg"
+        imageOne: "sam.jpg"
     }
     localStorage.setItem("Men Product#1", JSON.stringify(productsList));
 }
@@ -74,7 +74,7 @@ function createFakePorducts(productGrid, mainContentContainer) {
         productTitle.innerText = "product " + i;
         productSize.innerText = "size:"
         productPrice.innerText = "price:"
-        productImg.src = "product" + i;
+        productImg.src = "/product" + i;
         productImg.alt = "product" + i;
         productItem.append(productImg, productTitle, productSize, productPrice);
         productGrid.append(productItem);
