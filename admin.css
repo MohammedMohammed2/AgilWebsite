@@ -57,6 +57,16 @@ nav a {
     padding: 10px;
     display: block;
 }
+.admin-links{
+    display: flex;
+    justify-content: center;
+}
+.admin-links a{
+    color:#fff;
+}
+.admin-links a:hover{
+    color:pink
+}
 
 nav a:hover {
     background-color: #444;
