@@ -1,15 +1,17 @@
 import { getProduct } from "./utils/utils.js"
-import { editProduct } from "./utils/admin.js"
+import { editProduct, populateCategorySelection } from "./utils/admin.js"
 
 const productTitle = document.getElementById("title");
-const productDescription = document.getElementById("description");
 const productPrice = document.getElementById("price");
+const productSize = document.getElementById("size")
 const productCategory = document.getElementById("category");
 const productImageOne = document.getElementById("imageInputOne")
 const productImageTwo = document.getElementById("imageInputTwo")
 const productImageThree = document.getElementById("imageInputThree")
 const editProductBtn = document.getElementById("editProductBtn");
 
+const maleOption = document.getElementById("male");
+const femaleOption = document.getElementById("female");
 
 // Get productId through GET parameter
 const queryString = window.location.search;
@@ -21,17 +23,25 @@ const product = getProduct(productId);
 
 // Form should show current values
 productTitle.value = product.title;
-productDescription.value = product.description;
+product.value = product.description;
 productPrice.value = product.price;
+productSize.value = product.size
 productCategory.value = product.category;
 
 productImageOne.src = product.imageOne;
 productImageTwo.src = product.imageTwo;
 productImageThree.src = product.imageThree;
 
+
+maleOption.addEventListener('click', () => {
+    populateCategorySelection("male");
+})
+femaleOption.addEventListener('click', () => {
+    populateCategorySelection("female");
+})
+
 editProductBtn.addEventListener("click", () => {
     product.title = productTitle.value;
-    product.description = productDescription.value;
     product.price = productPrice.value;
     product.category = productCategory.value;
     const relativePath = "./images/createProducts/";

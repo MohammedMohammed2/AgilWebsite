@@ -1,5 +1,6 @@
 import { getProductsList, getProduct, getCategoriesList } from "./utils.js";
 
+const categorySelection = document.getElementById("category");
 
 // Creates product based on form input, saves product in local storage
 export function createProduct() {
@@ -103,22 +104,35 @@ export function editProduct(product, productId) {
 
 // Category selection should show correct categories based on gender
 export function populateCategorySelection(gender) {
-    const categorySelection = document.getElementById("category");
     categorySelection.innerHTML = "";
     categorySelection.placeholder = "Choose gender first"
+
+    const malePlaceholderCategories = ["Men Product#1", "Men Product#2", "Men Product#3"];
+    const femalePlaceholderCategories = ["Women Product#1", "Women Product#2", "Women Product#3"]
 
     let categories;
 
     if (gender == "male") {
         categories = JSON.parse(localStorage.getItem("menCategories"))
+        palceholderCategories(malePlaceholderCategories);
     } else if (gender == "female") {
         categories = JSON.parse(localStorage.getItem("womenCategories"))
+        palceholderCategories(femalePlaceholderCategories);
     }
 
     for (const category in categories) {
         const categoryOption = document.createElement("option");
         categoryOption.value = categories[category];
         categoryOption.textContent = categories[category];
+        categorySelection.append(categoryOption);
+    }
+}
+
+function palceholderCategories(catArray) {
+    for (const category in catArray) {
+        const categoryOption = document.createElement("option");
+        categoryOption.value = catArray[category];
+        categoryOption.textContent = catArray[category];
         categorySelection.append(categoryOption);
     }
 }
