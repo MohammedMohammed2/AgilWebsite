@@ -6,9 +6,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-// Change entity and table to match DB
-@Entity(name = "")
-@Table(name = "")
+
+@Entity(name = "contact_messages")
+@Table(name = "contact_messages")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -20,12 +20,12 @@ public class ContactMessagesModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "message")
+    private String message;
+
     @Column(name = "title")
     private String name;
 
     @Column(name = "email")
     private String email;
-
-    @Column(name = "message")
-    private String message;
 }

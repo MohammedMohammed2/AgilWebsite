@@ -1,6 +1,5 @@
 package com.example.coolfashion.categories;
 
-import com.example.coolfashion.product_categories.ProductCategoriesModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +22,4 @@ public class CategoriesModel {
 
     @Column(name = "category_title")
     private String name;
-
-    @OneToMany(mappedBy = "category")
-    private Set<ProductCategoriesModel> productCategories;
 }

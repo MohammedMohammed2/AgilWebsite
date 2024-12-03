@@ -8,10 +8,10 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 CREATE TABLE `category_products` (
-  `Id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL,
   `category_id` bigint(20) NOT NULL,
   `product_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`Id`),
+  PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`),
   KEY `product_id` (`product_id`),
   CONSTRAINT `category_products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),

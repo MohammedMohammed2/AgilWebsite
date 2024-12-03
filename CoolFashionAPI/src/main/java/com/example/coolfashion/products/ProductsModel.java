@@ -1,8 +1,6 @@
 package com.example.coolfashion.products;
 
 import com.example.coolfashion.categories.CategoriesModel;
-import com.example.coolfashion.images.ImagesModel;
-import com.example.coolfashion.product_categories.ProductCategoriesModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -34,11 +32,4 @@ public class ProductsModel {
 
     @Column(name = "size")
     private String size;
-
-    @ManyToOne
-    @JoinColumn(name = "category_id")
-    private CategoriesModel category;
-
-    @OneToMany(mappedBy = "product")
-    private Set<ImagesModel> images;
 }
