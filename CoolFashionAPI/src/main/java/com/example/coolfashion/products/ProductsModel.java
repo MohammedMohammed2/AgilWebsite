@@ -30,7 +30,7 @@ public class ProductsModel {
     private int price;
 
     @Column(name = "amount")
-    private String amount;
+    private int amount;
 
     @Column(name = "size")
     private String size;
