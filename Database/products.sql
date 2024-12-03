@@ -7,15 +7,13 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-CREATE TABLE `category_products` (
-  `Id` bigint(20) NOT NULL,
-  `category_id` bigint(20) NOT NULL,
-  `product_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`Id`),
-  KEY `category_id` (`category_id`),
-  KEY `product_id` (`product_id`),
-  CONSTRAINT `category_products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
-  CONSTRAINT `category_products_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
+CREATE TABLE `products` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `title` varchar(250) NOT NULL,
+  `price` bigint(20) NOT NULL,
+  `amount` bigint(20) NOT NULL,
+  `size` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 

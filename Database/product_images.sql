@@ -14,7 +14,7 @@ CREATE TABLE `product_images` (
   UNIQUE KEY `id` (`id`),
   KEY `product_id` (`product_id`),
   KEY `image_id` (`image_id`),
-  CONSTRAINT `product_images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `produkter` (`id`),
+  CONSTRAINT `product_images_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
   CONSTRAINT `product_images_ibfk_2` FOREIGN KEY (`image_id`) REFERENCES `images` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
