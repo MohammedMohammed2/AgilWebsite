@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7ce52b2-11a8-4438-aa06-1a1d198ae49f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/produkter.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,17 +24,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "editor.preferences.tabs"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -50,5 +45,10 @@
       <updated>1733232501985</updated>
     </task>
     <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/AgilWebsite$CoolfashionApplication.ic" NAME="CoolfashionApplication Coverage Results" MODIFIED="1733238781166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.coolfashion.*</FILTER>
+    </SUITE>
   </component>
 </project>
