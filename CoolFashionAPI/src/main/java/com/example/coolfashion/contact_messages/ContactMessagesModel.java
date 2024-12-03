@@ -1,4 +1,4 @@
-package com.example.coolfashion.contactmessages;
+package com.example.coolfashion.contact_messages;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

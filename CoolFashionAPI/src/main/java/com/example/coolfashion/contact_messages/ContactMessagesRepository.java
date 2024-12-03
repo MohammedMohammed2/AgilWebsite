@@ -1,4 +1,4 @@
-package com.example.coolfashion.contactmessages;
+package com.example.coolfashion.contact_messages;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

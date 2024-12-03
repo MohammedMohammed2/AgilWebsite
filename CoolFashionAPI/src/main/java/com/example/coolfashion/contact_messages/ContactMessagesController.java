@@ -1,4 +1,4 @@
-package com.example.coolfashion.contactmessages;
+package com.example.coolfashion.contact_messages;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
