@@ -27,7 +27,6 @@ CREATE TABLE `produkter` (
   `title` varchar(255) DEFAULT NULL,
   `pris` double DEFAULT NULL,
   `antal` int(11) DEFAULT NULL,
-  `category` varchar(255) DEFAULT NULL,
   `storlek` varchar(255) DEFAULT NULL,
   UNIQUE KEY `id` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
