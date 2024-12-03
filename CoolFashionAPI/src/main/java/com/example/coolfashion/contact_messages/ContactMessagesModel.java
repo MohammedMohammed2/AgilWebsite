@@ -1,7 +1,6 @@
 package com.example.coolfashion.contact_messages;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,4 +14,18 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ContactMessagesModel {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "title")
+    private String name;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "message")
+    private String message;
 }
