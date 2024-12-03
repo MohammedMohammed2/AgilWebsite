@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 // Change entity and table to match DB
-@Entity(name = "")
-@Table(name = "")
+@Entity(name = "product_images")
+@Table(name = "product_images")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

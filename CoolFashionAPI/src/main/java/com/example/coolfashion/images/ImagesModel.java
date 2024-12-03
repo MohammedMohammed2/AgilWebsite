@@ -23,7 +23,7 @@ public class ImagesModel {
     private String imageUrl;
 
     @Column(name = "primary_image")
-    private boolean primaryImage;
+    private boolean isPrimary;
 
     @OneToOne
     @JoinColumn(name = "product_id")
