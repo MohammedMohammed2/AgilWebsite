@@ -24,8 +24,9 @@ public class ContactMessagesModel {
     private String message;
 
     @Column(name = "title")
-    private String name;
+    private String title;
 
     @Column(name = "email")
     private String email;
+
 }

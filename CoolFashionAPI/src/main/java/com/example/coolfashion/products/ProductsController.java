@@ -12,7 +12,6 @@ public class ProductsController {
     @Autowired
     ProductsService productsService;
 
-
     @PostMapping("/createProduct")
     public ResponseEntity<ProductsModel> createProduct(@RequestBody ProductsModel product) {
         ProductsModel createdProduct = productsService.createProduct(product);
