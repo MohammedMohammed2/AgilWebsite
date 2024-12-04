@@ -22,4 +22,8 @@ public class CategoriesModel {
 
     @Column(name = "category_title")
     private String name;
+    @Enumerated(EnumType.STRING)
+    @Column(name="gender")
+    private Gender gender;
+
 }
