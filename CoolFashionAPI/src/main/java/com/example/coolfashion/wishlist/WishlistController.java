@@ -14,6 +14,6 @@ public class WishlistController {
 
     @GetMapping("/getWishListed")
     public List<Object> getWishListed(){
-        return Collections.singletonList(wishlistService.getWishListed(1));
+        return Collections.singletonList(wishlistService.getAllWishListed());
     }
 }

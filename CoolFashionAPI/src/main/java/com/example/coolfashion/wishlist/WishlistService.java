@@ -10,6 +10,6 @@ public class WishlistService {
     @Autowired
     WishlistRepository wishlistRepository;
 
-    public List<WishlistModel> getWishListed(int i){return wishlistRepository.findAllById(1);}
+    public List<WishlistModel> getAllWishListed(){return wishlistRepository.findAll();}
 
 }
