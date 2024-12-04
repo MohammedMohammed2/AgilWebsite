@@ -16,7 +16,7 @@ public class Mapping {
         return "contactUs";
     }
 
-    @GetMapping("/getProductForm.html")
+    @GetMapping("/getProductForm")
     public String getProductForm(){
         return "create_new_product_in_category";
     }
