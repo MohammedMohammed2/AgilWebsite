@@ -16,16 +16,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@Controller
+@RestController
 public class ProductsController {
     @Autowired
     ProductsService productsService;
 
-    // Allow CORS for this specific method
-    @GetMapping("/my-endpoint")
+
+    @GetMapping("/getProducts")
     @CrossOrigin(origins = "https://localhost:8080", allowedHeaders = "Content-Type, Authorization", methods = {RequestMethod.GET})
     public List<Object> getData() {
-        return Collections.singletonList(productsService.getProduct());
+        return Collections.singletonList(productsService.getAllProducts());
     }
 
 
