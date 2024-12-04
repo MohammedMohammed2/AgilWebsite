@@ -28,6 +28,12 @@ public class ProductsController {
         return Collections.singletonList(productsService.getProduct());
     }
 
+
+    @GetMapping("/getProductForm")
+    public String getProductForm(){
+        return "create_new_product_in_category";
+    }
+
     @PostMapping("/create_product")
     public ResponseEntity<ProductsModel> createProduct(@RequestBody ProductsModel product) {
         ProductsModel createdProduct = productsService.createProduct(product);
