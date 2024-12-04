@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7ce52b2-11a8-4438-aa06-1a1d198ae49f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/create_new_product_in_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/create_new_product_in_category.html" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/CoolfashionApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/CoolfashionApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/added_products.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/added_products.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/create_new_product_in_category.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/create_new_product_in_category.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/index.html" afterDir="false" />
->>>>>>> parent of 8adb48f (reverted)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
