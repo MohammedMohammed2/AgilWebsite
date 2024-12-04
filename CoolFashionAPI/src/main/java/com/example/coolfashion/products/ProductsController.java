@@ -11,25 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductsController {
     @Autowired
     ProductsService productsService;
-
-<<<<<<< HEAD
-    @GetMapping("/getProductForm")
-    public String getProductForm(){
-        return "create_new_product_in_category";
-    }
-
-    @GetMapping("/index.html")
-    public String getHome(){
-        return "index";
-    }
-
-    @GetMapping("/contactUs.html")
-    public String getContactForm(){
-        return "contactUs";
-    }
-=======
->>>>>>> parent of 6d54726 (moved all the js files html and css to templates and static folders)
-
+    
     @PostMapping("/create_product")
     public ResponseEntity<ProductsModel> createProduct(@RequestBody ProductsModel product) {
         ProductsModel createdProduct = productsService.createProduct(product);
