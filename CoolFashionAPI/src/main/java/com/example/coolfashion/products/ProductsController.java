@@ -21,19 +21,11 @@ public class ProductsController {
     @Autowired
     ProductsService productsService;
 
-    @GetMapping("/getProductForm")
-    public String getProductForm(){
-        return "create_new_product_in_category";
-    }
     // Allow CORS for this specific method
     @GetMapping("/my-endpoint")
     @CrossOrigin(origins = "https://localhost:8080", allowedHeaders = "Content-Type, Authorization", methods = {RequestMethod.GET})
     public List<Object> getData() {
         return Collections.singletonList(productsService.getProduct());
-    }
-    @GetMapping("/contactUs.html")
-    public String getContactForm(){
-        return "contactUs";
     }
 
     @PostMapping("/create_product")
