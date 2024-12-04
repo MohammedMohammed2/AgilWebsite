@@ -27,7 +27,6 @@ async function createProduct(product) {
 
 // Event listener for form submission
 document.getElementById("addProductBtn").addEventListener("click", async (event) => {
-    event.preventDefault(); // Prevent form reload
 
     // Gather product data from form fields
     const product = {
