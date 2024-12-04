@@ -14,10 +14,19 @@ public class ProductsController {
     @Autowired
     ProductsService productsService;
 
-
     @GetMapping("/getProductForm")
     public String getProductForm(){
         return "create_new_product_in_category";
+    }
+
+    @GetMapping("/index.html")
+    public String getHome(){
+        return "index";
+    }
+
+    @GetMapping("/contactUs.html")
+    public String getContactForm(){
+        return "contactUs";
     }
 
     @PostMapping("/create_product")
