@@ -13,7 +13,7 @@ public class ProductsController {
     ProductsService productsService;
 
 
-    @PostMapping("/create_product")
+    @PostMapping("/createProduct")
     public ResponseEntity<ProductsModel> createProduct(@RequestBody ProductsModel product) {
         ProductsModel createdProduct = productsService.createProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
