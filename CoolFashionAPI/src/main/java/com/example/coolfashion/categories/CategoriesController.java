@@ -3,10 +3,9 @@ package com.example.coolfashion.categories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class CategoriesController {
@@ -22,5 +21,9 @@ public class CategoriesController {
         return ResponseEntity.status(HttpStatus.CREATED).body(object);
     }
 
-
+    @GetMapping(value = "/categories")
+    @CrossOrigin(origins = "https://localhost:8080/", allowedHeaders = "Content-Type, Authorization", methods = {RequestMethod.POST})
+    public List<Object> getCategoriesByGender(@RequestParam Gender gender) {
+        return List.of(categoriesService.findCategoryByGender(gender));
+    }
 }

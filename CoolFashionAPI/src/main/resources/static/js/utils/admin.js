@@ -104,6 +104,9 @@ export function editProduct(product, productId) {
 
 // Category selection should show correct categories based on gender
 export function populateCategorySelection(gender) {
+
+
+
     categorySelection.innerHTML = "";
     categorySelection.placeholder = "Choose gender first"
 
@@ -113,12 +116,16 @@ export function populateCategorySelection(gender) {
     let categories;
 
     if (gender == "male") {
+        
+    }
+
+    /* if (gender == "male") {
         categories = JSON.parse(localStorage.getItem("menCategories"))
         palceholderCategories(malePlaceholderCategories);
     } else if (gender == "female") {
         categories = JSON.parse(localStorage.getItem("womenCategories"))
         palceholderCategories(femalePlaceholderCategories);
-    }
+    } */
 
     for (const category in categories) {
         const categoryOption = document.createElement("option");
