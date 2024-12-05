@@ -1,10 +1,10 @@
 package com.example.coolfashion.wishlist;
 
+import com.example.coolfashion.products.ProductsModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
@@ -18,5 +18,11 @@ public class WishlistController {
     @CrossOrigin(origins = "https://localhost:8080", allowedHeaders = "Content-Type, Authorization", methods = {RequestMethod.GET})
     public List<Object> getWishListed(){
         return Collections.singletonList(wishlistService.getAllWishListed());
+    }
+
+    @PostMapping("/addToWishList")
+    public ResponseEntity<WishlistModel>addToWishList(@RequestBody WishlistModel wishList) {
+        WishlistModel addedToWishList = wishlistService.addToWishList(wishList);
+        return ResponseEntity.status(HttpStatus.CREATED).body(addedToWishList);
     }
 }
