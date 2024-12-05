@@ -30,7 +30,6 @@ function populatePage() {
             messageContent.append(messageDiv);
         }
     })
-    
 }
 
 async function readMessages() {

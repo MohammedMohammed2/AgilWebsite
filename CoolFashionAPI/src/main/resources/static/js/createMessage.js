@@ -1,12 +1,12 @@
 import { postRequest, getRequest } from "./utils/api.js";
 
-const email = document.getElementById("email").value;
-const title = document.getElementById("title").value;
-const message = document.getElementById("subject").value;
 const sendBtn = document.getElementById("submit-contact");
 
-
 sendBtn.addEventListener("click", async () => {
+    const email = document.getElementById("email").value;
+    const title = document.getElementById("title").value;
+    const message = document.getElementById("subject").value;
+
     // Creates message object
     const messageObject = {
         message: message,
