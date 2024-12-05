@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ContactMessagesController {
@@ -16,9 +13,9 @@ public class ContactMessagesController {
     ContactMessagesService contactMessagesService;
 
     @PostMapping("/contact-message")
-    @ResponseBody
-    public ResponseEntity<String> createMessage(@RequestBody ContactMessagesModel contactMessagesModel){
-        contactMessagesService.createMessage(contactMessagesModel);
-        return ResponseEntity.ok("Message created!");
+    @CrossOrigin(origins = "https://localhost:8080/", allowedHeaders = "Content-Type, Authorization", methods = {RequestMethod.POST})
+    public ResponseEntity<ContactMessagesModel> createMessage(@RequestBody ContactMessagesModel contactMessagesModel){
+        ContactMessagesModel createdMessage = contactMessagesService.createMessage(contactMessagesModel);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdMessage);
     }
 }

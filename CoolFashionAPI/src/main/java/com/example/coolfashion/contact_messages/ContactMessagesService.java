@@ -8,7 +8,8 @@ public class ContactMessagesService {
     @Autowired
     ContactMessagesRepository contactMessagesRepository;
 
-    public Object createMessage(ContactMessagesModel contactMessagesModel) {
-        return contactMessagesRepository.save(contactMessagesModel);
+    public ContactMessagesModel createMessage(ContactMessagesModel contactMessagesModel) {
+        contactMessagesRepository.save(contactMessagesModel);
+        return contactMessagesModel;
     }
 }
