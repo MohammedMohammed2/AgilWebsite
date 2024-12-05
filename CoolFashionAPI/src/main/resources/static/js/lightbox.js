@@ -27,30 +27,52 @@ close.addEventListener('click', () => {
 nextButton.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % currentImages.length;
     lightboxContent.src = currentImages[currentIndex];
+    updateActiveThumbnail();
 });
 
 prevButton.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
     lightboxContent.src = currentImages[currentIndex];
+    updateActiveThumbnail();
 });
 
 lightbox.addEventListener('click', (e) => {
-    if (e.target !== lightboxContent && !e.target.closest('.lightbox-controls')) {
+    // Close the lightbox only if the background is clicked, not the image or controls
+    if (e.target !== lightboxContent && !e.target.closest('.lightbox-controls') && e.target !== thumbnailContainer) {
         lightbox.style.display = 'none';
     }
 });
 
 function updateThumbnails(images) {
-    thumbnailContainer.innerHTML = '';
+    thumbnailContainer.innerHTML = '';  // Clear existing thumbnails
     images.forEach((image, index) => {
         const thumbnail = document.createElement('img');
         thumbnail.src = image;
         thumbnail.alt = `Thumbnail ${index + 1}`;
         thumbnail.classList.add('thumbnail');
-        thumbnail.addEventListener('click', () => {
+        
+        // Add click event to update main image
+        thumbnail.addEventListener('click', (e) => {
+            e.stopPropagation();  // Prevent the click event from propagating to the parent lightbox
             currentIndex = index;
             lightboxContent.src = images[currentIndex];
+            updateActiveThumbnail();
         });
+        
         thumbnailContainer.appendChild(thumbnail);
     });
+    
+    updateActiveThumbnail();  // Highlight the first thumbnail initially
 }
+
+function updateActiveThumbnail() {
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    
+    // Remove 'active' class from all thumbnails
+    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+    
+    // Add 'active' class to the currently selected thumbnail
+    thumbnails[currentIndex].classList.add('active');
+}
+
+

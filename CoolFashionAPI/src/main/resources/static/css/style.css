@@ -372,13 +372,21 @@ html, body {
     object-fit: cover;
     cursor: pointer;
     transition: transform 0.3s ease;
+    border: 2px solid transparent; 
+    border-radius: 5px;
 }
 
 .thumbnail:hover {
     transform: scale(1.1);
     border: 2px solid white;
-    border-radius: 5px;
 }
+
+.thumbnail.active {
+    border: 2px solid #ffcc00; 
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.8); 
+}
+
 
 .footer {
     background-color: #333;
