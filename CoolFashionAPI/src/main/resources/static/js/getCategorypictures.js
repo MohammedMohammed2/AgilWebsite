@@ -50,6 +50,10 @@ export function createCategoryPage(Event, mainContentContainer) {
 
     }
 }
+
+
+
+
 //Testing if there is a product saved
 function saveProductTestingPurpose(productsList) {
     let nextProductId = Object.keys(productsList).length + 1;

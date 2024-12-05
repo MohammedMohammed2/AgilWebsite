@@ -1,15 +1,6 @@
 import { getRequest } from "./utils/api.js";
 
 const messageContent = document.getElementById("read-messages");
-
-
-
-
-
-
-
-
-
 populatePage();
 
 // Populates the page with all messages

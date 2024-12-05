@@ -27,5 +27,6 @@ export async function getRequest(endpoint) {
         method: "GET",
     });
 
+    // In your function calling getRequest, use response.data[0] to read object properties (ask if you need help)
     return response;
 }
