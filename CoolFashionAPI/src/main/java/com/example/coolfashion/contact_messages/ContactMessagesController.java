@@ -1,11 +1,11 @@
 package com.example.coolfashion.contact_messages;
 
+import com.example.coolfashion.categories.CategoriesModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ContactMessagesController {
@@ -13,11 +13,9 @@ public class ContactMessagesController {
     ContactMessagesService contactMessagesService;
 
     @PostMapping("/contact-message")
-    public ResponseEntity<Object> createMessage(
-            @Param(value = "title") String title, @Param(value = "message") String message, @Param(value = "email") String email
-    ){
-
-        return new ResponseEntity<>(contactMessagesService.createMessage(title, message, email), HttpStatus.CREATED);
+    @CrossOrigin(origins = "https://localhost:8080/", allowedHeaders = "Content-Type, Authorization", methods = {RequestMethod.POST})
+    public ResponseEntity<ContactMessagesModel> createMessage(@RequestBody ContactMessagesModel contactMessagesModel){
+        ContactMessagesModel createdMessage = contactMessagesService.createMessage(contactMessagesModel);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdMessage);
     }
-
 }
