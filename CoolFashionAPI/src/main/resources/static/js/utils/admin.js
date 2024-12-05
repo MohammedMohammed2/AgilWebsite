@@ -1,4 +1,5 @@
 import { getProductsList, getProduct, getCategoriesList } from "./utils.js";
+import { getRequest } from "./api.js";
 
 const categorySelection = document.getElementById("category");
 
@@ -102,21 +103,45 @@ export function editProduct(product, productId) {
     localStorage.setItem('products', JSON.stringify(productsList));
 }
 
+async function getCategories(gender) {
+    const response = await getRequest(`/categories?gender=${gender}`);
+    const data = await response.json();
+    return data[0];
+}
+
 // Category selection should show correct categories based on gender
 export function populateCategorySelection(gender) {
-
-
-
     categorySelection.innerHTML = "";
     categorySelection.placeholder = "Choose gender first"
 
     const malePlaceholderCategories = ["Men Product#1", "Men Product#2", "Men Product#3"];
     const femalePlaceholderCategories = ["Women Product#1", "Women Product#2", "Women Product#3"]
 
-    let categories;
 
+    // Checks what gender is selected, finds categories by gender and displays them
     if (gender == "male") {
-        
+        getCategories("men")
+        .then((categories) => {
+            for (const category in categories) {
+                const categoryName = categories[category].name;
+
+                const categoryOption = document.createElement("option");
+                categoryOption.value = categoryName;
+                categoryOption.textContent = categoryName;
+                categorySelection.append(categoryOption);
+            }
+        })
+    } else if (gender == "female") {
+        getCategories("women")
+        .then((categories) => {
+            for (const category in categories) {
+                const categoryName = categories[category].name;
+                const categoryOption = document.createElement("option");
+                categoryOption.value = categoryName;
+                categoryOption.textContent = categoryName;
+                categorySelection.append(categoryOption);
+            }
+        })
     }
 
     /* if (gender == "male") {
@@ -127,12 +152,12 @@ export function populateCategorySelection(gender) {
         palceholderCategories(femalePlaceholderCategories);
     } */
 
-    for (const category in categories) {
+    /* for (const category in categories) {
         const categoryOption = document.createElement("option");
         categoryOption.value = categories[category];
         categoryOption.textContent = categories[category];
         categorySelection.append(categoryOption);
-    }
+    } */
 }
 
 function palceholderCategories(catArray) {
