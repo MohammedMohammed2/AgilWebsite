@@ -9,6 +9,8 @@
     <script type="module" src="/js/main.js" defer></script>
     <script type="module"  src="/js/menuLoader.js" defer></script>
     <script type="module"  src="/js/findProduct.js" defer></script>
+    <script type="module"  src="/js/lightbox.js" defer></script>
+
     
 </head>
 <header class="header">
@@ -56,16 +58,16 @@
         <section class="featured-products" id="content-container">
             <h2>Featured Products</h2>
             <div class="product-grid">
-                <div class="product-item">
-                    <img src="product1.jpg" alt="Product 1" class="lightbox-image">
+                <div class="product-item" data-images="product1-1.jpg,product1-2.jpg,product1-3.jpg">
+                    <img src="product1-1.jpg" alt="Product 1">
                     <p>Product #1</p>
                 </div>
-                <div class="product-item">
-                    <img src="product2.jpg" alt="Product 2" class="lightbox-image">
+                <div class="product-item" data-images="product2-1.jpg,product2-2.jpg,product2-3.jpg">
+                    <img src="product2-1.jpg" alt="Product 2">
                     <p>Product #2</p>
                 </div>
-                <div class="product-item">
-                    <img src="product3.jpg" alt="Product 3" class="lightbox-image">
+                <div class="product-item" data-images="product3-1.jpg,product3-2.jpg,product3-3.jpg">
+                    <img src="product3-1.jpg" alt="Product 3">
                     <p>Product #3</p>
                 </div>
             </div>
@@ -73,6 +75,11 @@
         <div id="lightbox">
             <span class="close">&times;</span>
             <img id="lightbox-content" src="" alt="Lightbox Image">
+            <div class="lightbox-controls">
+                <button id="prev">&laquo; Previous</button>
+                <button id="next">Next &raquo;</button>
+            </div>
+            <div id="thumbnail-container"></div> <!-- Thumbnail container for smaller images -->
         </div>
         <section class="news-section" id="news-section">
             <h2>Latest Products</h2>
