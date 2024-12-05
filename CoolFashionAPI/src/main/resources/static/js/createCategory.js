@@ -1,36 +1,71 @@
 import { createCategoryPage } from "./getCategorypictures.js";
-document.addEventListener('DOMContentLoaded', () => {
-    // Load categories from localStorage on page load
-    loadCategoriesFromStorage();
+const addCategoryBtn = document.getElementById("add-category-button");
+addCategoryBtn.addEventListener("click", createCatgory)
 
-    document.getElementById('add-category-button').addEventListener('click', () => {
-        const categoryType = document.getElementById('category-type').value;
-        const categoryName = document.getElementById('category-name').value;
+const BASE_URL = "http://localhost:8080";
 
-        if (categoryName.trim() === '') {
-            alert('Please enter a valid product name.');
-            return;
-        }
+async function createCatgory() {
+    const categoryType = document.getElementById('category-type').value;
+    const categoryName = document.getElementById('category-name').value;
 
-        const menuId = categoryType === 'men' ? 'men-menu' : 'women-menu';
-        const menu = document.getElementById(menuId);
+    if (categoryName.trim() === '') {
+        alert('Please enter a valid product name.');
+        return;
+    }
 
-        const newMenuItem = document.createElement('li');
-        const newLink = document.createElement('a');
-        newLink.href = '#';
-        newLink.className = 'dropdown-item';
-        newLink.textContent = categoryName;
+    console.log(categoryType);
+    console.log(categoryName);
 
-        newMenuItem.appendChild(newLink);
-        menu.appendChild(newMenuItem);
+    const categoryObject = { name: categoryName, gender: categoryType };
+    sendFormData(categoryObject);
 
-        // Save the new category
-        saveCategoryToStorage(categoryType, categoryName);
+}
+// document.addEventListener('DOMContentLoaded', () => {
+//     // Load categories from localStorage on page load
+//     loadCategoriesFromStorage();
 
-        document.getElementById('add-category-form').reset();
-        alert(`Successfully added "${categoryName}" to the ${categoryType} category.`);
-    });
-});
+//     document.getElementById('add-category-button').addEventListener('click', () => {
+
+//         //const menuId = categoryType === 'men' ? 'men-menu' : 'women-menu';
+//         // const menu = document.getElementById(menuId);
+
+//         // const newMenuItem = document.createElement('li');
+//         // const newLink = document.createElement('a');
+//         // newLink.href = '#';
+//         // newLink.className = 'dropdown-item';
+//         // newLink.textContent = categoryName;
+
+//         // newMenuItem.appendChild(newLink);
+//         // menu.appendChild(newMenuItem);
+
+//         // // Save the new category
+//         // saveCategoryToStorage(categoryType, categoryName);
+
+//         // document.getElementById('add-category-form').reset();
+//         // alert(`Successfully added "${categoryName}" to the ${categoryType} category.`);
+//     });
+// });
+
+async function sendFormData(categoryObject) {
+
+    try {
+        const response = await fetch(`${BASE_URL}/categories/new`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(categoryObject)
+        }).then((response) => {
+            if (!response.status == 200) {
+                throw new Error(`Failed to create category. Status: ${response.status}`);
+            }
+        })
+
+    }
+    catch (error) {
+        console.error("Error", error.message);
+    }
+}
 
 // Save a new category to localStorage
 function saveCategoryToStorage(type, name) {

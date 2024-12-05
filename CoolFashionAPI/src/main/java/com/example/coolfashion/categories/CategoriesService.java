@@ -11,7 +11,7 @@ public class CategoriesService {
     CategoriesRepository categoriesRepository;
 
     @Transactional
-    public void createCategory(CategoriesModel category){
-        categoriesRepository.save(category);
+    public CategoriesModel createCategory(CategoriesModel category){
+        return categoriesRepository.save(category);
     }
 }
