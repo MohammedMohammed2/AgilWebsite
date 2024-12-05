@@ -57,4 +57,8 @@ public class Mapping {
         return "login";
     }
 
+    @GetMapping("/messages.html")
+    public String messages() {
+        return "messages";
+    }
 }
