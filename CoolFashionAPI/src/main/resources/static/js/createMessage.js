@@ -14,6 +14,8 @@ sendBtn.addEventListener("click", async () => {
         email: email
     }
 
+    console.log(messageObject);
+
     // Sends API request with messageObject as body-parameter
     const createdMessage = await postRequest("/contact-messages/create", messageObject)
     // Only to confirm message being created / failing

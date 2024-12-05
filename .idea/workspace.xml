@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7ce52b2-11a8-4438-aa06-1a1d198ae49f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/js/lightbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/js/lightbox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/js/createMessage.js" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/js/createMessage.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
