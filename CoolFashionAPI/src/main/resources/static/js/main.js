@@ -16,27 +16,3 @@ function populateCategory(Event) {
     createCategoryPage(Event, mainContentContainer)
 }
 
-const lightbox = document.getElementById('lightbox');
-const lightboxContent = document.getElementById('lightbox-content');
-const close = document.querySelector('.close');
-const images = document.querySelectorAll('.lightbox-image');
-
-// Open Lightbox
-images.forEach(image => {
-    image.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxContent.src = image.src;
-    });
-});
-
-// Close Lightbox
-close.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-});
-
-// Close Lightbox by clicking outside the image
-lightbox.addEventListener('click', (e) => {
-    if (e.target !== lightboxContent) {
-        lightbox.style.display = 'none';
-    }
-});

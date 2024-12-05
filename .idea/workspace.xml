@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e7ce52b2-11a8-4438-aa06-1a1d198ae49f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/js/lightbox.js" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/js/lightbox.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +42,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\sahar\OneDrive\Skrivbord\AgilWebsite\CoolFashionAPI\src\main\resources\images" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

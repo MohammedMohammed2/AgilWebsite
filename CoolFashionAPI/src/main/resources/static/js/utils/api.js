@@ -1,15 +1,15 @@
 
+const BASE_URL = "http://localhost:8080";
+
 // Object should represent the model class in Spring Boot and endpoint the controller path 
 export async function postRequest(endpoint, object) {
-    const BASE_URL = "http://localhost:8080";
-
     try {
         const response = await fetch(`${BASE_URL}${endpoint}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(message),
+            body: JSON.stringify(object),
         });
 
         if (!response.ok) {
@@ -23,7 +23,6 @@ export async function postRequest(endpoint, object) {
 
 // Endpoint represents the controller path
 export async function getRequest(endpoint) {
-    const BASE_URL = "http://localhost:8080";
     const response = await fetch(`${BASE_URL}${endpoint}`, {
         method: "GET",
     });
