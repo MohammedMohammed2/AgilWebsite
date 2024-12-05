@@ -1,4 +1,7 @@
 import { createCategoryPage } from "./getCategorypictures.js";
+import { getRequest } from "./utils/api.js";
+import { getCategories } from "./utils/admin.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     // Load categories into menus
     loadCategoriesFromStorage();
@@ -23,19 +26,26 @@ function populateCategory(Event) {
 }
 
 
-// Load categories from localStorage and populate menus
+// Get categories for respective gender, then populate the menu with categories
 function loadCategoriesFromStorage() {
-    const menCategories = JSON.parse(localStorage.getItem('menCategories')) || [];
-    const womenCategories = JSON.parse(localStorage.getItem('womenCategories')) || [];
 
-    const menMenu = document.getElementById('men-menu');
-    const womenMenu = document.getElementById('women-menu');
+    getCategories("men")
+    .then((categoriesList) => {
+        for (const category in categoriesList) {
+            const categoryName = categoriesList[category].name;
+            const menMenu = document.getElementById('men-menu');
+            addMenuItem(menMenu, categoryName)
+        }
+    })
 
-    // Populate Men menu
-    menCategories.forEach(name => addMenuItem(menMenu, name));
-
-    // Populate Women menu
-    womenCategories.forEach(name => addMenuItem(womenMenu, name));
+    getCategories("women")
+    .then((categoriesList) => {
+        for (const category in categoriesList) {
+            const categoryName = categoriesList[category].name;
+            const womenMenu = document.getElementById('women-menu');
+            addMenuItem(womenMenu, categoryName)
+        }
+    })
 }
 
 // Add a menu item to a dropdown

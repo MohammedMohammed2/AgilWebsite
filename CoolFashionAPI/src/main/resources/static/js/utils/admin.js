@@ -103,7 +103,7 @@ export function editProduct(product, productId) {
     localStorage.setItem('products', JSON.stringify(productsList));
 }
 
-async function getCategories(gender) {
+export async function getCategories(gender) {
     const response = await getRequest(`/categories?gender=${gender}`);
     const data = await response.json();
     return data[0];
