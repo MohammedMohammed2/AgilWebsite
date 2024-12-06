@@ -6,8 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="e7ce52b2-11a8-4438-aa06-1a1d198ae49f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/category_products/CategoryProductsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/category_products/CategoryProductsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/products/ProductsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/contactUs.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/contactUs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/messages.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/messages.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/secondHand.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/secondHand.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

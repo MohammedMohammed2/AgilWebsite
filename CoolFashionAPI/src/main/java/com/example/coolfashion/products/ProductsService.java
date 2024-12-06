@@ -14,6 +14,7 @@ public class ProductsService {
     private ProductsRepository productRepository;
 
     public List<ProductsModel> getAllProducts(){return productRepository.findAll();}
+    public ProductsModel getProductByTitle(String title){return productRepository.findByTitle(title);}
 
     public ProductsModel createProduct(ProductsModel product) {
         return productRepository.save(product);

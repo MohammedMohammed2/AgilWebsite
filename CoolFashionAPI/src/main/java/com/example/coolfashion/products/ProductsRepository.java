@@ -10,7 +10,7 @@ import java.util.List;
 // Change Long to whatever datatype your id is in CategoriesModel
 public interface ProductsRepository extends JpaRepository<ProductsModel, Long> {
     List<ProductsModel> getProductsModelByAmountLessThan(long amount);
-    ProductsModel findByName(String productTitle);
+    ProductsModel findByTitle(String productTitle);
     @Query(value = "SELECT p.* FROM category_products cp \n" +
             "\tJOIN products p ON cp.product_id = p.id \n" +
             "\tJOIN categories c ON cp.category_id = c.id \n" +

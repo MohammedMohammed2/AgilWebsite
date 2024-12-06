@@ -22,7 +22,7 @@ public class ProductsModel {
     private Long id;
 
     @Column(name = "title")
-    private String name;
+    private String title;
 
     @Column(name = "price")
     private int price;
