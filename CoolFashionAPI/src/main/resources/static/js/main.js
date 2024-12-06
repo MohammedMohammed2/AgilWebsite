@@ -1,5 +1,4 @@
 import { createCategoryPage } from "./getCategorypictures.js";
-import { amountOfProducts } from "./utils/utils.js";
 //html element
 const menDropdown = document.getElementById("men-menu")
 const womenDropdown = document.getElementById("women-menu")
@@ -207,6 +206,4 @@ function getUserId() {
 
 
 
-
-amountOfProducts();
 
