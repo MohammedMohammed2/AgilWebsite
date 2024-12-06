@@ -23,9 +23,6 @@ public class ImagesModel {
     private String imageUrl;
 
     @Column(name = "primary_image")
-    private boolean isPrimary;
+    private Boolean isPrimary;
 
-    @OneToOne
-    @JoinColumn(name = "product_id")
-    private ProductsModel product;
 }

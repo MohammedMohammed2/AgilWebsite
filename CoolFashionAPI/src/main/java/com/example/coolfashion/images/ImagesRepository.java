@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 // Change Long to whatever datatype your id is in CategoriesModel
 public interface ImagesRepository extends JpaRepository<ImagesModel, Long> {
+    ImagesModel getImagesModelById(long id);
 }

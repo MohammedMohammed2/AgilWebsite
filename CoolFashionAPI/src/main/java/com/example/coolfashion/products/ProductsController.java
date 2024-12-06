@@ -24,8 +24,16 @@ public class ProductsController {
 
     @GetMapping("/getProducts")
     @CrossOrigin(origins = "https://localhost:8080", allowedHeaders = "Content-Type, Authorization", methods = {RequestMethod.GET})
-    public List<Object> getData() {
-        return Collections.singletonList(productsService.getAllProducts());
+    public ResponseEntity<List<ProductsModel>> getData() {
+        List<ProductsModel> allProducts = productsService.getAllProducts();
+        return ResponseEntity.status(HttpStatus.FOUND).body(allProducts);
+    }
+
+    @GetMapping("/getProducts/insufficient")
+    @ResponseBody
+    public ResponseEntity<List<ProductsModel>> getInsufficientProducts() {
+      List<ProductsModel> productsList = productsService.getInsufficientProducts();
+      return ResponseEntity.status(HttpStatus.OK).body(productsList);
     }
 
 

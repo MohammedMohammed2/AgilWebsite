@@ -18,5 +18,8 @@ public class ProductsService {
     public ProductsModel createProduct(ProductsModel product) {
         return productRepository.save(product);
     }
+    public List<ProductsModel> getInsufficientProducts() {
+       return productsRepository.getProductsModelByAmountLessThan(2);
+    }
 }
 
