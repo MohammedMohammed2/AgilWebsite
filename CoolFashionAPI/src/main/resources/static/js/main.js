@@ -77,11 +77,11 @@ function renderSearchResults(products) {
 
         const productImage = document.createElement('img');
         productImage.src = product.imageUrl;
-        productImage.alt = product.title;
+        productImage.alt = product.name;
         productImage.classList.add('product-image');
 
         const productName = document.createElement('h3');
-        productName.textContent = product.title;
+        productName.textContent = product.name;
 
         const productPrice = document.createElement('p');
         productPrice.textContent = `Price: $${product.price}`;
