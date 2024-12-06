@@ -19,6 +19,6 @@ public class WishlistModel {
     private Long id;
 
     @Column(name = "product_id")
-    private Long productId;
+    private Long product_id;
 
 }

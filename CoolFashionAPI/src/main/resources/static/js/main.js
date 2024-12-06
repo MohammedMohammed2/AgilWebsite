@@ -95,7 +95,7 @@ function renderSearchResults(products) {
         const wishlistButton = document.createElement('button');
         wishlistButton.classList.add('wishlist-button');
         wishlistButton.textContent = 'Add to Wishlist';
-        wishlistButton.onclick = () => addToWishlist(product._id);
+        wishlistButton.onclick = () => addToWishlist(product.id);
 
         // Append elements to the product item
         productItem.appendChild(productImage);
@@ -129,8 +129,7 @@ async function addToWishlist(productId) {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                productId: productId,
-                userId: userId,
+                product_id: productId,
             }),
         });
 
