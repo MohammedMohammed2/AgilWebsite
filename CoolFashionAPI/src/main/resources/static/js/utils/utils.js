@@ -16,11 +16,21 @@ export function getProduct(productId) {
     return productList[productId];
 }
 
+<<<<<<< Updated upstream
 export async function amountOfProducts() {
     getProductsList()
     .then(products => {
         console.log(products);
     })
+=======
+export async function getAmountOfProducts() {
+    const url = "localhost:8080/getProducts";
+
+    const response = await getRequest("/getProducts")
+    const data = await response.json();
+    return data.length
+
+>>>>>>> Stashed changes
 }
 
 // Loops through products list and creates html elements for them
