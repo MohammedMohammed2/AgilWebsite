@@ -22,7 +22,7 @@ public class CategoryProductsService {
 
     public CategoryProductsModel createRelation(String categoryName, String productName) {
         CategoriesModel category = categoriesRepository.findByName(categoryName);
-        ProductsModel product = productsRepository.findByTitle(productName);
+        ProductsModel product = productsRepository.findByName(productName);
 
         CategoryProductsModel relation = new CategoryProductsModel();
         relation.setCategory(category);

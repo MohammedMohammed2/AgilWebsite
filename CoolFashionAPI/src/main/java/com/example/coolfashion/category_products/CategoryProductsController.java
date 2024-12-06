@@ -20,6 +20,4 @@ public class CategoryProductsController {
             @Param("category") String category, @Param("product") String product) {
         return ResponseEntity.ok(categoryProductsService.createRelation(category, product));
     }
-
-    
 }

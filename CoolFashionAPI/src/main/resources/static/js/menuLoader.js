@@ -25,7 +25,6 @@ function populateCategory(Event) {
     createCategoryPage(Event, mainContentContainer)
 }
 
-
 // Get categories for respective gender, then populate the menu with categories
 function loadCategoriesFromStorage() {
 
