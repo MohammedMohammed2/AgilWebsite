@@ -8,16 +8,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "category_products")
-@Table(name = "category_products")
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
+
+@Entity(name = "category_products")
+@Table(name = "category_products")
 public class CategoryProductsModel {
 
     @Id
-    @Column
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

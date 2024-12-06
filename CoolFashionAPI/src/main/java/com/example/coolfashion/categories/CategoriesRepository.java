@@ -10,4 +10,5 @@ import java.util.List;
 public interface CategoriesRepository extends JpaRepository<CategoriesModel, Long> {
 
     List<CategoriesModel> findCategoriesByGender(Gender gender);
+    CategoriesModel findByName(String name);
 }

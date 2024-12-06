@@ -13,9 +13,28 @@ export async function postRequest(endpoint, object) {
         });
 
         if (!response.ok) {
+            throw new Error(`Failed to send POST. Status: ${response.status}`);
+        }
+        return await response.json(); // Return the created object
+    } catch (error) {
+        console.error("Error:", error.message);
+    }
+}
+
+// Post request where endpoint users URL-parameters instead of body
+export async function postRequestParams(endpoint) {
+    try {
+        const response = await fetch(`${BASE_URL}${endpoint}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        });
+
+        if (!response.ok) {
             throw new Error(`Failed to create product. Status: ${response.status}`);
         }
-        return await response.json(); // Return the created product
+        return await response.json(); // Return the created object
     } catch (error) {
         console.error("Error:", error.message);
     }
