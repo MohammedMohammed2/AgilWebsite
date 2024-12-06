@@ -52,6 +52,10 @@ public class ProductsController {
     @GetMapping("/getProduct/{title}")
     @CrossOrigin(origins = "https://localhost:8080/", allowedHeaders = "Content-Type, Authorization", methods = {RequestMethod.GET})
     public ResponseEntity<List<ProductsModel>> getProductByTitle(@PathVariable String title) {
-        return ResponseEntity.ok(Collections.singletonList(productsService.getProductByTitle(title)));
+        List<ProductsModel> products = productsService.getProductsByTitle(title);
+        if (products.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(products);
     }
 }

@@ -19,7 +19,10 @@ function populateCategory(Event) {
 // Select search elements
 const searchInput = document.getElementById('search-input');
 const searchButton = document.getElementById('search-button');
-const body = document.body;  // The entire body of the page will be replaced
+const mainContent = document.getElementById('main-content');  // The section where products are displayed
+
+// Variable to keep track of last query
+let lastQuery = '';
 
 // Event listener for search button
 searchButton.addEventListener('click', async () => {
@@ -28,6 +31,14 @@ searchButton.addEventListener('click', async () => {
         alert("Please enter a product name!");
         return;
     }
+
+    // Avoid search repetition (if the query is the same as last one)
+    if (query === lastQuery) {
+        alert("You've already searched for this product.");
+        return;
+    }
+
+    lastQuery = query;  // Update the last query with the current one
 
     try {
         // Fetch product data from the backend based on the search query
@@ -38,10 +49,12 @@ searchButton.addEventListener('click', async () => {
 
         // Parse the response data (Assuming backend returns JSON)
         const productData = await response.json();
-        const product = productData[0]; // Assume it's an array with a single product
 
-        // Rebuild the entire body with the search result
-        renderSearchResult(product);
+        if (productData.length === 0) {
+            renderNoResults();  // Show no results if no products found
+        } else {
+            renderSearchResults(productData);  // Render products
+        }
 
     } catch (error) {
         console.error("Failed to fetch product:", error);
@@ -49,128 +62,61 @@ searchButton.addEventListener('click', async () => {
     }
 });
 
-// Function to render search results and completely rebuild the body
-function renderSearchResult(product) {
-    if (!product) {
-        body.innerHTML = "<p>No product found</p>";
-        return;
-    }
+// Function to render search results
+function renderSearchResults(products) {
+    // Clear any existing content in the main content area
+    mainContent.innerHTML = '';
 
-    // Rebuild the entire body content with the search result only
-    body.innerHTML = `
-    <header class="header">
-    <div class="header-container">
-        <div class="logo">
-            <h1 class="coolFont">coolfashion</h1>
-        </div>
+    // Loop through each product and create its HTML structure
+    products.forEach(product => {
+        // Create a div to hold the product information
+        const productItem = document.createElement('div');
+        const productGrid = document.createElement('div');
+        productGrid.classList.add('product-grid');
+        productItem.classList.add('product-item');
+        productItem.setAttribute('data-id', product.id); // Add unique identifier to avoid duplicates
 
-        <div class="search-bar">
-            <input id="search-input" class="search-input" type="text" placeholder="Search for a product">
-            <button id="search-button" class="search-button">Search</button>
-        </div>
+        const productImage = document.createElement('img');
+        productImage.src = product.imageUrl;
+        productImage.alt = product.title;
+        productImage.classList.add('product-image');
 
-        <nav class="dropdown">
-            <ul>
-                <li>
-                    <a href="/index.html">Home</a>
-                </li>
-                <li><a href="/secondHand.html">Second Hand</a></li>
-                <li><a href="/contactUs.html">Contact</a></li>
-                <li>
-                    <a href="#" class="ProductsDropdown-toggle">Products</a>
-                    <ul class="dropdown">
-                        <li>
-                            <a href="#" class="Mendropdown-toggle">Men</a>
-                            <ul class="dropdown-menu" id="men-menu">
-                                <li><a href="#" class="dropdown-item">Men Product#1</a></li>
-                                <li><a href="#" class="dropdown-item">Men Product#2</a></li>
-                                <li><a href="#" class="dropdown-item">men Product#3</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#" class="WomenDropdown-toggle">Women</a>
-                            <ul class="dropdown-menu" id="women-menu">
-                                <li><a href="#" class="dropdown-item">Women Product#1</a></li>
-                                <li><a href="#" class="dropdown-item">Women Product#2</a></li>
-                                <li><a href="#" class="dropdown-item">women Product#3</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-                <li class="login-button">
-                    <a href="/login.html">Login</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-</header>
-        <div class="main-content" id="main-content">
-            <div class="product-item">
-                <img src="${product.imageUrl}" alt="${product.title}" class="product-image" />
-                <h3>${product.title}</h3>
-                <p>Price: $${product.price}</p>
-                <p>Size: $${product.size}</p>
-                <p>${product.amount}</p>
-                <button class="wishlist-button" onclick="addToWishlist('${product._id}')">Add to Wishlist</button>
-            </div>
-        </div>
+        const productName = document.createElement('h3');
+        productName.textContent = product.title;
 
-        <div id="lightbox">
-            <span class="close">&times;</span>
-            <img id="lightbox-content" src="" alt="Lightbox Image">
-            <div class="lightbox-controls">
-                <button id="prev">&laquo; Previous</button>
-                <button id="next">Next &raquo;</button>
-            </div>
-            <div id="thumbnail-container"></div> <!-- Thumbnail container for smaller images -->
-        </div>
-        <footer class="footer">
-    <div class="footer-container">
-        <div class="footer-section">
-            <h3>About Us</h3>
-            <p>We are a company that specializes in providing high-quality products and services.</p>
-        </div>
-        <div class="footer-section">
-            <h3>Follow Us</h3>
-            <div class="social-links">
-                <a href="#">Facebook</a>
-                <a href="#">Twitter</a>
-                <a href="#">Instagram</a>
-            </div>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>&copy; 2024 Your Company. All rights reserved.</p>
-    </div>
-</footer>
-    `;
+        const productPrice = document.createElement('p');
+        productPrice.textContent = `Price: $${product.price}`;
 
-    // Reinitialize lightbox and wishlist functionality after rebuilding body
-    initializeLightbox();
-}
+        const productSize = document.createElement('p');
+        productSize.textContent = `Size: ${product.size}`;
 
-// Function to initialize lightbox functionality
-function initializeLightbox() {
-    const lightboxImages = document.querySelectorAll('.product-image');
-    lightboxImages.forEach(img => {
-        img.addEventListener('click', function() {
-            openLightbox(this.src);
-        });
+        const productAmount = document.createElement('p');
+        productAmount.textContent = `Amount: ${product.amount}`;
+
+        const wishlistButton = document.createElement('button');
+        wishlistButton.classList.add('wishlist-button');
+        wishlistButton.textContent = 'Add to Wishlist';
+        wishlistButton.onclick = () => addToWishlist(product._id);
+
+        // Append elements to the product item
+        productItem.appendChild(productImage);
+        productItem.appendChild(productName);
+        productItem.appendChild(productPrice);
+        productItem.appendChild(productSize);
+        productItem.appendChild(productAmount);
+        productItem.appendChild(wishlistButton);
+
+
+        // Append the product item to the main content area
+        productGrid.appendChild(productItem);
+        mainContent.appendChild(productGrid);
     });
 }
 
-// Function to open lightbox with the clicked image
-function openLightbox(src) {
-    const lightbox = document.getElementById('lightbox');
-    const lightboxContent = document.getElementById('lightbox-content');
-    lightbox.style.display = 'block';
-    lightboxContent.src = src;
+// Function to render a "No Results" message if no products are found
+function renderNoResults() {
+    mainContent.innerHTML = `<p>No products found for your search.</p>`;
 }
-
-// Close lightbox when clicked on the close button
-document.querySelector('.close').addEventListener('click', () => {
-    document.getElementById('lightbox').style.display = 'none';
-});
 
 // Function to handle adding the product to the wishlist
 async function addToWishlist(productId) {
@@ -204,6 +150,7 @@ async function addToWishlist(productId) {
 function getUserId() {
     return '12345';  // Replace with actual user ID logic
 }
+
 
 
 
