@@ -15,27 +15,45 @@
         <div class="logo">
             <h1 class="coolFont">coolfashion</h1>
         </div>
+
         <div class="search-bar">
             <input id="search-input" class="search-input" type="text" placeholder="Search for a product">
             <button id="search-button" class="search-button">Search</button>
         </div>
+
         <nav class="dropdown">
             <ul>
                 <li>
                     <a href="/index.html">Home</a>
                 </li>
-                <li class="menu-item dropdown">
-                    <a href="#" class="menu-link">Admin</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="added_products.html">Products Created</a></li>
-                        <li><a href="adminAddCategory.html">Add New Category</a></li>
-                        <li><a href="/create_product.html">Upload New Product</a></li>
-                        <li><a href="/create_new_product_in_category.html">Create Product in Category</a></li>
-                    </ul>
-                </li>                
+                <li><a href="/secondHand.html">Second Hand</a></li>
+                <li><a href="/contactUs.html">Contact</a></li>
                 <li>
                     <a href="#" class="ProductsDropdown-toggle">Products</a>
+                    <ul class="dropdown">
+                        <li>
+                            <a href="#" class="Mendropdown-toggle">Men</a>
+                            <ul class="dropdown-menu" id="men-menu">
+                                <li><a href="#" class="dropdown-item">Men Product#1</a></li>
+                                <li><a href="#" class="dropdown-item">Men Product#2</a></li>
+                                <li><a href="#" class="dropdown-item">Men Product#3</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="WomenDropdown-toggle">Women</a>
+                            <ul class="dropdown-menu" id="women-menu">
+                                <li><a href="#" class="dropdown-item">Women Product#1</a></li>
+                                <li><a href="#" class="dropdown-item">Women Product#2</a></li>
+                                <li><a href="#" class="dropdown-item">Women Product#3</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/wishlisted.html" class="dropdown-item">Wishlisted</a></li>
+                    </ul>
                 </li>
+                <li class="login-button">
+                    <a href="/login.html">Login</a>
+                </li>
+            </ul>
         </nav>
     </div>
 </header>

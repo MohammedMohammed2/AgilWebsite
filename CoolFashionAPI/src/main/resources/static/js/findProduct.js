@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <img src="${product.image}" alt="${product.name}">
                                 <p>${product.name}</p>
                                 <p>${product.price}</p>
-                                <button>add to wishlist</button>
+                               <button class="wishlist-button" onclick="addToWishlist('${product._id}')">Add to Wishlist</button>
                             </div>
                         `).join('')}
                     </div>

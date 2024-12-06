@@ -28,6 +28,25 @@
     font-weight: bold;
 }
 
+.dropdown ul li a.dropdown-item {
+    display: block;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #9a8d8d;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown ul li a.dropdown-item:hover {
+    background-color: #f0f0f0;
+    color: #9e4c4c;
+}
+
+.dropdown ul > li {
+    position: relative;
+}
+
+
 
 .dropdown {
     position: absolute;
