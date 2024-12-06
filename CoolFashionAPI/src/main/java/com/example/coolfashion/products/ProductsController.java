@@ -42,4 +42,10 @@ public class ProductsController {
         ProductsModel createdProduct = productsService.createProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdProduct);
     }
+
+    @GetMapping("/categories/{categoryName}/products")
+    @CrossOrigin(origins = "https://localhost:8080/", allowedHeaders = "Content-Type, Authorization", methods = {RequestMethod.GET})
+    public ResponseEntity<List<ProductsModel>> getProductsByCategory(@PathVariable String categoryName) {
+        return ResponseEntity.ok(productsService.getProductsByCategory(categoryName));
+    }
 }

@@ -4,7 +4,6 @@ export async function getProductsList() {
     const response = await getRequest("/getProducts")
     const data = await response.json();
 
-    // Returns all messages from DB
     return data[0];
 }
 
@@ -17,13 +16,11 @@ export function getProduct(productId) {
     return productList[productId];
 }
 
-export function amountOfProducts() {
-    const url = "localhost:8080/getProducts";
-
-    fetch(url).then(response => {
-        console.log(response);
+export async function amountOfProducts() {
+    getProductsList()
+    .then(products => {
+        console.log(products);
     })
-
 }
 
 // Loops through products list and creates html elements for them
@@ -114,5 +111,6 @@ export function showAddedProducts() {
             } */
         })
 }
+
 //html
 const menCategoryList = document.getElementsByClassName("dropdown-item");
