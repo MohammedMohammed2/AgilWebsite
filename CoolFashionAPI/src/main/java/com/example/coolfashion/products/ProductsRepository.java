@@ -9,4 +9,5 @@ import java.util.List;
 // Change Long to whatever datatype your id is in CategoriesModel
 public interface ProductsRepository extends JpaRepository<ProductsModel, Long> {
     List<ProductsModel> getProductsModelByAmountLessThan(long amount);
+    ProductsModel findByName(String productTitle);
 }

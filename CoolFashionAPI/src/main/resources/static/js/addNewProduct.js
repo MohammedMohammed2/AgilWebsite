@@ -1,3 +1,5 @@
+import { postRequestParams } from "./utils/api.js"
+
 // Base URL of your Spring Boot server
 const BASE_URL = "http://localhost:8080";
 
@@ -25,22 +27,36 @@ async function createProduct(product) {
     }
 }
 
+async function createRelation(productName, categoryValue) {
+    console.log("Product name : " + productName);
+
+    const endpoint = `/categories/relation?category=${categoryValue}&product=${productName}`
+    console.log(endpoint);
+    postRequestParams(endpoint);
+}
+
 // Event listener for form submission
 document.getElementById("addProductBtn").addEventListener("click", async (event) => {
 
+    const categoryValue = document.getElementById("category").value;
+
     // Gather product data from form fields
     const product = {
-        title: document.getElementById("title").value,
+        name: document.getElementById("title").value,
         price: parseInt(document.getElementById("price").value),
         amount: parseInt(document.getElementById("amount").value),
         size: document.getElementById("size").value,
     };
+
+    console.log(product);
+    
 
     // Call function to create product
     const createdProduct = await createProduct(product);
 
     // Show success message
     if (createdProduct) {
+        createRelation(product.name, categoryValue);
         alert("Created Product: " + JSON.stringify(createdProduct));
     } else {
         alert("Failed to create product");

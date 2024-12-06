@@ -60,8 +60,6 @@ export function createProduct() {
             imageThree: fileNameThree
         };
 
-        console.log(productsList);
-
         localStorage.setItem('products', JSON.stringify(productsList));
         saveToCategory(productCategory, productsList[nextProductId])
 
