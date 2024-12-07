@@ -1,27 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Sample product data
-    const products = [
-        { name: 'Mens T-shirt 1', category: 'mens-tshirt', image: 'mens-tshirt-1.jpg', price: '$20' },
-        { name: 'Mens T-shirt 2', category: 'mens-tshirt', image: 'mens-tshirt-2.jpg', price: '$25' },
-        { name: 'Womens Top 1', category: 'womens-top', image: 'womens-top-1.jpg', price: '$30' },
-        { name: 'Womens Top 2', category: 'womens-top', image: 'womens-top-2.jpg', price: '$35' },
-        { name: 'Womens Jacket 1', category: 'womens-jacket', image: 'womens-jacket-1.jpg', price: '$100' },
-        { name: 'Womens Jacket 2', category: 'womens-jacket', image: 'womens-jacket-2.jpg', price: '$120' }
-    ];
-
     // Handle category clicks
     const categoryItems = document.querySelectorAll('.category-item');
     categoryItems.forEach(item => {
-        item.addEventListener('click', () => {
+        item.addEventListener('click', async () => {
             const category = item.getAttribute('data-category');
-            remakeBodyWithCategoryProducts(category, products);
+            try {
+                const products = await fetchProductsByCategory(category); // Fetch from backend
+                remakeBodyWithCategoryProducts(category, products);
+            } catch (error) {
+                console.error("Failed to fetch products:", error);
+                alert("Error fetching products for the selected category.");
+            }
         });
     });
 
+    // Function to fetch products from backend based on category
+    async function fetchProductsByCategory(category) {
+        const response = await fetch(`/categories/${category}/products`); // Adjust endpoint to match your API
+        if (!response.ok) {
+            throw new Error(`Failed to fetch products: ${response.statusText}`);
+        }
+        return await response.json(); // Assuming the response is a JSON array of products
+    }
+
     // Rebuild the body with products of the selected category
     function remakeBodyWithCategoryProducts(category, products) {
-        const filteredProducts = products.filter(product => product.category === category);
-
         const bodyContent = `
             <header class="header">
                 <div class="header-container">
@@ -39,14 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
                                         <ul class="dropdown-menu" id="men-menu">
                                             <li><a href="#" class="dropdown-item">Men Product#1</a></li>
                                             <li><a href="#" class="dropdown-item">Men Product#2</a></li>
-                                            <li><a href="#" class="dropdown-item">men Product#3</a></li>
+                                            <li><a href="#" class="dropdown-item">Men Product#3</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="#" class="WomenDropdown-toggle">Women</a>
                                         <ul class="dropdown-menu" id="women-menu">
                                             <li><a href="#" class="dropdown-item">Women Product#1</a></li>
                                             <li><a href="#" class="dropdown-item">Women Product#2</a></li>
-                                            <li><a href="#" class="dropdown-item">women Product#3</a></li>
+                                            <li><a href="#" class="dropdown-item">Women Product#3</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -56,23 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     </nav>
                 </div>
             </header>
-            <body>
-             <div class="main-content" id="main-content">
+            <div class="main-content" id="main-content">
                 <section class="featured-products">
                     <h2>Products in ${capitalizeFirstLetter(category.replace('-', ' '))}</h2>
                     <div class="product-grid">
-                        ${filteredProducts.map(product => `
+                        ${products.map(product => `
                             <div class="product-item">
-                                <img src="${product.image}" alt="${product.name}">
+                                <img src="${product.imageUrl}" alt="${product.name}">
                                 <p>${product.name}</p>
                                 <p>${product.price}</p>
-                               <button class="wishlist-button" onclick="addToWishlist('${product._id}')">Add to Wishlist</button>
+                                <button class="wishlist-button" onclick="addToWishlist('${product._id}')">Add to Wishlist</button>
                             </div>
                         `).join('')}
                     </div>
                 </section>
             </div>
-            </body>
             <footer class="footer">
                 <div class="footer-container">
                     <div class="footer-section">
@@ -102,5 +103,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
     }
-});
 
+    // Placeholder function to handle adding to wishlist
+    function addToWishlist(productId) {
+        alert(`Added product ${productId} to wishlist.`);
+        // Add logic to handle wishlist actions here
+    }
+});
