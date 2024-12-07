@@ -57,6 +57,12 @@ nav a {
     padding: 10px;
     display: block;
 }
+.admin-units-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
 .admin-links{
     display: flex;
     justify-content: center;

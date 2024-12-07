@@ -199,6 +199,9 @@ html, body {
 .main-content img:hover{
     cursor: pointer;
 }
+
+
+
 .main-content {
     flex: 1; 
     flex-direction: column;
