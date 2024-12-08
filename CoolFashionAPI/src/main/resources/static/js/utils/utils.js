@@ -4,7 +4,7 @@ export async function getProductsList() {
     const response = await getRequest("/getProducts")
     const data = await response.json();
 
-    return data[0];
+    return data;
 }
 
 export function getCategoriesList(category) {
@@ -40,7 +40,7 @@ export function showAddedProducts() {
                 productDiv.classList.add("product-item");
 
                 const productTitle = document.createElement("p");
-                productTitle.textContent = productsList[product].title;
+                productTitle.textContent = productsList[product].name;
 
                 const productSize = document.createElement("p");
                 productSize.textContent = productsList[product].size;

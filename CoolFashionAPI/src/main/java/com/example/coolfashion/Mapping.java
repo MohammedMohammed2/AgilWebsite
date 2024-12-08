@@ -16,7 +16,6 @@ public class Mapping {
         return "contactUs";
     }
 
-
     @GetMapping("/secondHand.html")
     public String getSecondHand() {
         return "secondHand";
@@ -60,5 +59,10 @@ public class Mapping {
     @GetMapping("/messages.html")
     public String messages() {
         return "messages";
+    }
+
+    @GetMapping("/admin_ten_latest.html")
+    public String adminTenLatest() {
+        return "admin_ten_latest";
     }
 }
