@@ -62,6 +62,12 @@ nav a {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    margin:5rem;
+
+}
+.admin-units-list-container{
+    display: flex;
+    justify-content: center;
 }
 .admin-links{
     display: flex;

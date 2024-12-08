@@ -14,6 +14,9 @@ export async function lessThenTwoUnitsPage() {
     const data = await getInsufficientUnitsProducts();
 
     const unorganizedList = document.createElement("ul");
+    const listContainer = document.createElement("div");
+
+    listContainer.classList.add("admin-units-list-container")
 
     data.forEach(element => {
         const list = document.createElement("li");
@@ -21,8 +24,9 @@ export async function lessThenTwoUnitsPage() {
         list.innerText = element.name + " units: " + element.amount;
         unorganizedList.appendChild(list);
     });
+    listContainer.appendChild(unorganizedList);
     mainContentContainer.append(pageTitle);
 
-    mainContentContainer.appendChild(unorganizedList);
+    mainContentContainer.appendChild(listContainer);
 
 }
