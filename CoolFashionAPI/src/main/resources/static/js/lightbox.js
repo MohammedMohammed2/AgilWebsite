@@ -9,6 +9,9 @@ const thumbnailContainer = document.getElementById('thumbnail-container');
 let currentImages = [];
 let currentIndex = 0;
 
+console.log("productItems")
+console.log(productItems);
+
 productItems.forEach(item => {
     item.addEventListener('click', () => {
         const images = item.getAttribute('data-images').split(',');
@@ -50,7 +53,7 @@ function updateThumbnails(images) {
         thumbnail.src = image;
         thumbnail.alt = `Thumbnail ${index + 1}`;
         thumbnail.classList.add('thumbnail');
-        
+
         // Add click event to update main image
         thumbnail.addEventListener('click', (e) => {
             e.stopPropagation();  // Prevent the click event from propagating to the parent lightbox
@@ -58,19 +61,19 @@ function updateThumbnails(images) {
             lightboxContent.src = images[currentIndex];
             updateActiveThumbnail();
         });
-        
+
         thumbnailContainer.appendChild(thumbnail);
     });
-    
+
     updateActiveThumbnail();  // Highlight the first thumbnail initially
 }
 
 function updateActiveThumbnail() {
     const thumbnails = document.querySelectorAll('.thumbnail');
-    
+
     // Remove 'active' class from all thumbnails
     thumbnails.forEach(thumb => thumb.classList.remove('active'));
-    
+
     // Add 'active' class to the currently selected thumbnail
     thumbnails[currentIndex].classList.add('active');
 }

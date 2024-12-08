@@ -35,13 +35,13 @@ export async function createCategoryPage(event, mainContentContainer) {
                 productItem.classList.add("product-item")
                 // imageDiv.setAttribute("data-images")
 
-            wishlistButton.classList.add('wishlist-button');
-            wishlistButton.textContent = 'Add to Wishlist';
-            wishlistButton.onclick = () => addToWishlist(product.id);
-            
-            
-            // Show out of stock if amount is 0, else show amount
-            product.amount > 0 ? productAmount.innerText = "amount: " + product.amount  : productAmount.innerText = "out of stock";
+                wishlistButton.classList.add('wishlist-button');
+                wishlistButton.textContent = 'Add to Wishlist';
+                wishlistButton.onclick = () => addToWishlist(product.id);
+
+
+                // Show out of stock if amount is 0, else show amount
+                product.amount > 0 ? productAmount.innerText = "amount: " + product.amount : productAmount.innerText = "out of stock";
                 productTitle.innerText = product.name;
                 productSize.innerText = "size: " + product.size;
                 productPrice.innerText = "price:" + product.price + " kr";
@@ -69,8 +69,8 @@ export async function createCategoryPage(event, mainContentContainer) {
                         productItem.append(imageDiv);
                     });
 
-                // const imageListTwo = await getImages(product.id);
-                // changeLightboxPictures(imageListTwo);
+
+                //changeLightboxPictures(imageList);
 
 
 
@@ -109,7 +109,7 @@ async function addToWishlist(productId) {
         }
 
         // Display success message
-        alert(result.message);  
+        alert(result.message);
     } catch (error) {
         console.error("Failed to add to wishlist:", error);
         alert(error.message);  // Display error message from the backend
