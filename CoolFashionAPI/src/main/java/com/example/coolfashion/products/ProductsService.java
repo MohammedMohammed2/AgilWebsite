@@ -1,5 +1,6 @@
 package com.example.coolfashion.products;
 
+import com.example.coolfashion.wishlist.WishlistModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,6 @@ public class ProductsService {
     public List<ProductsModel> getProductsByCategory(String categoryName) {
         return productsRepository.findProductsByCategoryName(categoryName);
     }
+
 }
 

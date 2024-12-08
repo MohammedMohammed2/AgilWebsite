@@ -16,8 +16,9 @@ public class WishlistController {
 
     @GetMapping("/getWishListed")
     @CrossOrigin(origins = "https://localhost:8080", allowedHeaders = "Content-Type, Authorization", methods = {RequestMethod.GET})
-    public List<Object> getWishListed(){
-        return Collections.singletonList(wishlistService.getAllWishListed());
+    public ResponseEntity<List<ProductsModel>> getWishListed() {
+        List<ProductsModel> wishlistedProducts = wishlistService.getAllWishListed();
+        return ResponseEntity.ok(wishlistedProducts);
     }
 
     @PostMapping("/addToWishList")

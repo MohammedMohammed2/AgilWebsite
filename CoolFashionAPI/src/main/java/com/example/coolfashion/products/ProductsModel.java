@@ -1,6 +1,7 @@
 package com.example.coolfashion.products;
 
 import com.example.coolfashion.categories.CategoriesModel;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 
 import java.util.Set;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Entity(name = "products")
 @Table(name = "products")
 @NoArgsConstructor

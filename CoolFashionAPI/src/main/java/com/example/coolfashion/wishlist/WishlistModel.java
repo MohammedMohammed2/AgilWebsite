@@ -1,5 +1,6 @@
 package com.example.coolfashion.wishlist;
 
+import com.example.coolfashion.products.ProductsModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,9 @@ public class WishlistModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "product_id")
-    private Long product_id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", nullable = false)
+    private ProductsModel product;
 
 }

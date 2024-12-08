@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="product-grid">
                         ${products.map(product => `
                             <div class="product-item">
-                                <img src="${product.imageUrl}" alt="${product.title}" class="product-image">
-                                <h3>${product.title}</h3>
+                                <img src="${product.imageUrl}" alt="${product.name}" class="product-image">
+                                <h3>${product.name}</h3>
                                 <p>Price: $${product.price}</p>
                                 <p>Size: ${product.size}</p>
                             </div>
