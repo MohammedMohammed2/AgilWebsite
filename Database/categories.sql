@@ -10,11 +10,22 @@
 CREATE TABLE `categories` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `category_title` varchar(250) NOT NULL,
-  `gender` enum('male','female') DEFAULT NULL,
+  `gender` enum('men','women') DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
-
+INSERT INTO `categories` (`id`, `category_title`, `gender`) VALUES
+(1, 'testing', 'women');
+INSERT INTO `categories` (`id`, `category_title`, `gender`) VALUES
+(2, 'Men test', 'men');
+INSERT INTO `categories` (`id`, `category_title`, `gender`) VALUES
+(3, 'Men test 2', 'men');
+INSERT INTO `categories` (`id`, `category_title`, `gender`) VALUES
+(4, 'Women test 1', 'women'),
+(5, 'Women test 2', 'women'),
+(6, 'T-shirt', 'men'),
+(7, 'Shoes', 'men'),
+(9, 'hoodies', 'women');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

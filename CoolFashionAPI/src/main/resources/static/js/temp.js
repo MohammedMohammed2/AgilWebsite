@@ -1,5 +1,3 @@
-import { getRequest } from "./utils/api.js";
-
 export async function createCategoryPage(event, mainContentContainer) {
     const category = event.target.textContent;
 
@@ -48,36 +46,3 @@ export async function createCategoryPage(event, mainContentContainer) {
         mainContentContainer.append(productGrid);
     })
 }
-
-async function getProductsInCategory(category) {
-    const response = await getRequest(`/categories/${category}/products`)
-    const data = await response.json();
-
-    return data;
-}
-// Function to handle adding the product to the wishlist
-async function addToWishlist(productId) {
-    try {
-
-        // Send product ID and user ID to the backend to add to wishlist
-        const response = await fetch('/addToWishList', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                product_id: productId,
-            }),
-        });
-
-        if (!response.ok) {
-            throw new Error('Error adding to wishlist');
-        }
-
-        alert('Product has been added to your wishlist!');
-    } catch (error) {
-        console.error("Failed to add to wishlist:", error);
-        alert("There was an error adding the product to your wishlist.");
-    }
-}
-
