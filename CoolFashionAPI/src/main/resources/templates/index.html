@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/css/style.css">
     <script type="module"  src="/js/main.js" defer></script>
     <script type="module"  src="/js/menuLoader.js" defer></script>
-   
     <script type="module"  src="/js/lightbox.js" defer></script>
     <script type="module"  src="/js/showWishListed.js" defer></script>
     
@@ -80,15 +79,7 @@
                 </div>
             </div>
         </section>
-        <div id="lightbox">
-            <span class="close">&times;</span>
-            <img id="lightbox-content" src="" alt="Lightbox Image">
-            <div class="lightbox-controls">
-                <button id="prev">&laquo; Previous</button>
-                <button id="next">Next &raquo;</button>
-            </div>
-            <div id="thumbnail-container"></div> <!-- Thumbnail container for smaller images -->
-        </div>
+        
         <section class="news-section" id="news-section">
             <h2>Latest Products</h2>
             <div class="news-grid">
@@ -133,6 +124,17 @@
             </div>
         </section>
     </div>
+
+    <div id="lightbox">
+        <span class="close">&times;</span>
+        <img id="lightbox-content" src="" alt="Lightbox Image">
+        <div class="lightbox-controls">
+            <button id="prev">&laquo; Previous</button>
+            <button id="next">Next &raquo;</button>
+        </div>
+        <div id="thumbnail-container"></div> <!-- Thumbnail container for smaller images -->
+    </div>
+
 </body>
 <footer class="footer">
     <div class="footer-container">

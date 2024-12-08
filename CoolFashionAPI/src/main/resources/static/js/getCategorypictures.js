@@ -33,6 +33,7 @@ export async function createCategoryPage(event, mainContentContainer) {
                 const wishlistButton = document.createElement('button');
 
                 productItem.classList.add("product-item")
+                // imageDiv.setAttribute("data-images")
 
             wishlistButton.classList.add('wishlist-button');
             wishlistButton.textContent = 'Add to Wishlist';
@@ -46,10 +47,12 @@ export async function createCategoryPage(event, mainContentContainer) {
                 productPrice.innerText = "price:" + product.price + " kr";
 
                 // Get a list of images, loop through and add elements for each image
+                let imageAttribute = "";
                 const imageList = getImages(product.id)
                     .then((imageList) => {
                         for (const key in imageList) {
                             const imageObject = imageList[key];
+                            imageAttribute += imageObject.imageUrl + ",";
                             if (imageObject.isPrimary) {
                                 productImg.src = imageObject.imageUrl
                                 productImg.setAttribute("id", "primaryImage")
@@ -61,8 +64,16 @@ export async function createCategoryPage(event, mainContentContainer) {
                             }
 
                         }
+                        console.log(imageAttribute)
+                        productItem.setAttribute("data-images", imageAttribute);
                         productItem.append(imageDiv);
-                    })
+                    });
+
+                // const imageListTwo = await getImages(product.id);
+                // changeLightboxPictures(imageListTwo);
+
+
+
 
                 wishlistButton.classList.add('wishlist-button');
                 wishlistButton.textContent = 'Add to Wishlist';
