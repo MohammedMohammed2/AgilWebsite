@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class WishlistController {
@@ -22,8 +23,21 @@ public class WishlistController {
     }
 
     @PostMapping("/addToWishList")
-    public ResponseEntity<WishlistModel>addToWishList(@RequestBody WishlistModel wishList) {
-        WishlistModel addedToWishList = wishlistService.addToWishList(wishList);
-        return ResponseEntity.status(HttpStatus.CREATED).body(addedToWishList);
+    public ResponseEntity<Map<String, String>> addToWishlist(@RequestBody Map<String, Long> body) {
+        try {
+            Long productId = body.get("productId");
+
+            if (productId == null) {
+                return ResponseEntity.badRequest().body(Map.of("message", "Product ID is required"));
+            }
+
+            // Add the product to the wishlist via the service layer
+            wishlistService.addProductToWishlist(productId);
+
+            // Return a JSON response with a success message
+            return ResponseEntity.ok(Map.of("message", "Product has been added to your wishlist!"));
+        } catch (Exception ex) {
+            return ResponseEntity.status(500).body(Map.of("message", "Error adding product to wishlist: " + ex.getMessage()));
+        }
     }
 }

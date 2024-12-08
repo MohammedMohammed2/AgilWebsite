@@ -122,34 +122,29 @@ function renderNoResults() {
 // Function to handle adding the product to the wishlist
 async function addToWishlist(productId) {
     try {
-        const userId = getUserId();  // Get logged-in user's ID
-
-        // Send product ID and user ID to the backend to add to wishlist
         const response = await fetch('/addToWishList', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                product_id: productId,
-            }),
+            body: JSON.stringify({ productId }) // Send the productId in the request body
         });
 
+        // Parse the response as JSON
+        const result = await response.json();
+
         if (!response.ok) {
-            throw new Error('Error adding to wishlist');
+            throw new Error(result.message || 'Failed to add product to wishlist');
         }
 
-        alert('Product has been added to your wishlist!');
+        // Display success message
+        alert(result.message);  
     } catch (error) {
         console.error("Failed to add to wishlist:", error);
-        alert("There was an error adding the product to your wishlist.");
+        alert(error.message);  // Display error message from the backend
     }
 }
 
-// Placeholder function to get logged-in user ID (replace with actual logic)
-function getUserId() {
-    return '12345';  // Replace with actual user ID logic
-}
 
 
 

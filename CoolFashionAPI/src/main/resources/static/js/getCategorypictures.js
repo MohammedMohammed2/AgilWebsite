@@ -57,6 +57,7 @@ export async function createCategoryPage(event, mainContentContainer) {
             wishlistButton.textContent = 'Add to Wishlist';
             wishlistButton.onclick = () => addToWishlist(product.id);
             
+            
             // Show out of stock if amount is 0, else show amount
             product.amount > 0 ? productAmount.innerText = "amount: " + product.amount  : productAmount.innerText = "out of stock";
 
@@ -66,6 +67,34 @@ export async function createCategoryPage(event, mainContentContainer) {
         mainContentContainer.append(productGrid);
     })
 }
+
+
+// Function to handle adding the product to the wishlist
+async function addToWishlist(productId) {
+    try {
+        const response = await fetch('/addToWishList', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ productId }) // Send the productId in the request body
+        });
+
+        // Parse the response as JSON
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.message || 'Failed to add product to wishlist');
+        }
+
+        // Display success message
+        alert(result.message);  
+    } catch (error) {
+        console.error("Failed to add to wishlist:", error);
+        alert(error.message);  // Display error message from the backend
+    }
+}
+
 
 async function getProductsInCategory(category) {
     const response = await getRequest(`/categories/${category}/products`)
@@ -79,30 +108,4 @@ async function getImages(productId){
     const data = await response.json();
 
     return data;
-}
-
-// Function to handle adding the product to the wishlist
-async function addToWishlist(productId) {
-    try {
-
-        // Send product ID and user ID to the backend to add to wishlist
-        const response = await fetch('/addToWishList', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                product_id: productId,
-            }),
-        });
-
-        if (!response.ok) {
-            throw new Error('Error adding to wishlist');
-        }
-
-        alert('Product has been added to your wishlist!');
-    } catch (error) {
-        console.error("Failed to add to wishlist:", error);
-        alert("There was an error adding the product to your wishlist.");
-    }
 }
