@@ -46,7 +46,9 @@
     position: relative;
 }
 
-
+h3{
+    color: #1e2731;
+}
 
 .dropdown {
     position: absolute;
