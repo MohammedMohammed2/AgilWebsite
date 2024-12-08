@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ImagesController {
     @Autowired
@@ -23,5 +25,11 @@ public class ImagesController {
         System.out.println("image:" + image.getIsPrimary());
         ImagesModel newImage =  imagesService.createNewImage(image);
         return ResponseEntity.status(HttpStatus.CREATED).body(newImage);
+    }
+
+    @GetMapping("/products/{productId}/images")
+    @CrossOrigin(origins = "https://localhost:8080/", allowedHeaders = "Content-Type, Authorization", methods = {RequestMethod.GET})
+    public ResponseEntity<List<ImagesModel>> getImagesByProduct(@PathVariable Long productId) {
+        return ResponseEntity.ok(imagesService.getImagesByProduct(productId));
     }
 }

@@ -3,6 +3,8 @@ package com.example.coolfashion.images;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ImagesService {
     @Autowired
@@ -13,5 +15,9 @@ public class ImagesService {
     }
     public ImagesModel createNewImage(ImagesModel image){
         return imagesRepository.save(image);
+    }
+
+    public List<ImagesModel> getImagesByProduct(Long productId) {
+        return imagesRepository.findImagesByProductName(productId);
     }
 }

@@ -15,7 +15,7 @@ export async function createCategoryPage(event, mainContentContainer) {
     productGrid.classList.add("product-grid")
 
     getProductsInCategory(category)
-    .then((productsList) => {
+    .then(async (productsList) => {
         for (const key in productsList) {
             const product = productsList[key];
             console.log(product);
@@ -26,6 +26,7 @@ export async function createCategoryPage(event, mainContentContainer) {
             const productSize = document.createElement("p");
             const productPrice = document.createElement("p");
             const productAmount = document.createElement("p");
+            const imageDiv = document.createElement("div");
             const wishlistButton = document.createElement('button');
 
             productItem.classList.add("product-item")
@@ -34,6 +35,23 @@ export async function createCategoryPage(event, mainContentContainer) {
             productTitle.innerText = product.name;
             productSize.innerText = "size: " + product.size;
             productPrice.innerText = "price:" + product.price + " kr";
+
+            // Get a list of images, loop through and add elements for each image
+            const imageList = getImages(product.id)
+            .then((imageList) => {
+                for (const image in imageList) {
+                    const imageObject = imageList[image];
+                    const productImage = document.createElement("img");
+                    productImage.src = imageObject.imageUrl
+
+                    // If image is primary, set ID primaryImage
+                    if (imageObject.isPrimary) {
+                        productImage.setAttribute("id", "primaryImage")
+                    }
+                    imageDiv.append(productImage);
+                }
+                productItem.append(imageDiv);
+            })
 
             wishlistButton.classList.add('wishlist-button');
             wishlistButton.textContent = 'Add to Wishlist';
@@ -52,9 +70,17 @@ export async function createCategoryPage(event, mainContentContainer) {
 async function getProductsInCategory(category) {
     const response = await getRequest(`/categories/${category}/products`)
     const data = await response.json();
+    
+    return data;
+}
+
+async function getImages(productId){
+    const response = await getRequest(`/products/${productId}/images`);
+    const data = await response.json();
 
     return data;
 }
+
 // Function to handle adding the product to the wishlist
 async function addToWishlist(productId) {
     try {
@@ -80,4 +106,3 @@ async function addToWishlist(productId) {
         alert("There was an error adding the product to your wishlist.");
     }
 }
-
