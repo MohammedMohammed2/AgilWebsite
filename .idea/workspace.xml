@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7ce52b2-11a8-4438-aa06-1a1d198ae49f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/static/js/ShowWishListed.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/wishlist/WishlistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/wishlist/WishlistController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/wishlist/WishlistRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/wishlist/WishlistRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/wishlist/WishlistService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/java/com/example/coolfashion/wishlist/WishlistService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/contactUs.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/contactUs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/messages.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/messages.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/secondHand.html" beforeDir="false" afterPath="$PROJECT_DIR$/CoolFashionAPI/src/main/resources/templates/secondHand.html" afterDir="false" />
-    </list>
+    <list default="true" id="e7ce52b2-11a8-4438-aa06-1a1d198ae49f" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
