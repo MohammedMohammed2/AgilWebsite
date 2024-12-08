@@ -22,6 +22,7 @@ public class WishlistController {
     }
 
     @PostMapping("/addToWishList")
+    @CrossOrigin(origins = "https://localhost:8080", allowedHeaders = "Content-Type, Authorization", methods = {RequestMethod.GET})
     public ResponseEntity<WishlistModel>addToWishList(@RequestBody WishlistModel wishList) {
         WishlistModel addedToWishList = wishlistService.addToWishList(wishList);
         return ResponseEntity.status(HttpStatus.CREATED).body(addedToWishList);
