@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Rebuild the body with products of the selected category
     function remakeBodyWithCategoryProducts(category, products) {
+
         const bodyContent = `
             <header class="header">
                 <div class="header-container">
@@ -95,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </footer>
         `;
 
-        // Replace the body content with the new HTML
+        //Replace the body content with the new HTML
         document.body.innerHTML = bodyContent;
     }
 

@@ -8,16 +8,18 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 CREATE TABLE `category_products` (
-  `id` bigint(20) NOT NULL,
-  `category_id` bigint(20) NOT NULL,
+  `Id` bigint(20) NOT NULL AUTO_INCREMENT,
   `product_id` bigint(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `category_id` (`category_id`),
+  `category_id` bigint(20) NOT NULL,
+  PRIMARY KEY (`Id`),
   KEY `product_id` (`product_id`),
-  CONSTRAINT `category_products_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
-  CONSTRAINT `category_products_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  KEY `category_id` (`category_id`),
+  CONSTRAINT `category_products_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`),
+  CONSTRAINT `category_products_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+INSERT INTO `category_products` (`Id`, `product_id`, `category_id`) VALUES
+(1, 7, 1);
 
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

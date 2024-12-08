@@ -15,43 +15,24 @@ export async function createCategoryPage(event, mainContentContainer) {
     productGrid.classList.add("product-grid")
 
     getProductsInCategory(category)
-    .then(async (productsList) => {
-        for (const key in productsList) {
-            const product = productsList[key];
-            console.log(product);
-            
-            const productItem = document.createElement("div")
-            const productImg = document.createElement("img");
-            const productTitle = document.createElement("p");
-            const productSize = document.createElement("p");
-            const productPrice = document.createElement("p");
-            const productAmount = document.createElement("p");
-            const imageDiv = document.createElement("div");
-            const wishlistButton = document.createElement('button');
+        .then(async (productsList) => {
+            for (const key in productsList) {
+                console.log(productsList);
+                const product = productsList[key];
+                console.log("product")
+                console.log(product.imageOne);
 
-            productItem.classList.add("product-item")
-            productImg.src = "" + product.imageOne;
-            productImg.alt = "product " + key;
-            productTitle.innerText = product.name;
-            productSize.innerText = "size: " + product.size;
-            productPrice.innerText = "price:" + product.price + " kr";
 
-            // Get a list of images, loop through and add elements for each image
-            const imageList = getImages(product.id)
-            .then((imageList) => {
-                for (const image in imageList) {
-                    const imageObject = imageList[image];
-                    const productImage = document.createElement("img");
-                    productImage.src = imageObject.imageUrl
+                const productItem = document.createElement("div")
+                const productImg = document.createElement("img");
+                const productTitle = document.createElement("p");
+                const productSize = document.createElement("p");
+                const productPrice = document.createElement("p");
+                const productAmount = document.createElement("p");
+                const imageDiv = document.createElement("div");
+                const wishlistButton = document.createElement('button');
 
-                    // If image is primary, set ID primaryImage
-                    if (imageObject.isPrimary) {
-                        productImage.setAttribute("id", "primaryImage")
-                    }
-                    imageDiv.append(productImage);
-                }
-                productItem.append(imageDiv);
-            })
+                productItem.classList.add("product-item")
 
             wishlistButton.classList.add('wishlist-button');
             wishlistButton.textContent = 'Add to Wishlist';
@@ -60,12 +41,41 @@ export async function createCategoryPage(event, mainContentContainer) {
             
             // Show out of stock if amount is 0, else show amount
             product.amount > 0 ? productAmount.innerText = "amount: " + product.amount  : productAmount.innerText = "out of stock";
+                productTitle.innerText = product.name;
+                productSize.innerText = "size: " + product.size;
+                productPrice.innerText = "price:" + product.price + " kr";
 
-            productItem.append(productImg, productTitle, productSize, productPrice, productAmount, wishlistButton);
-            productGrid.append(productItem);
-        }
-        mainContentContainer.append(productGrid);
-    })
+                // Get a list of images, loop through and add elements for each image
+                const imageList = getImages(product.id)
+                    .then((imageList) => {
+                        for (const key in imageList) {
+                            const imageObject = imageList[key];
+                            if (imageObject.isPrimary) {
+                                productImg.src = imageObject.imageUrl
+                                productImg.setAttribute("id", "primaryImage")
+                            }
+                            else {
+                                const productImage = document.createElement("img");
+                                productImage.src = imageObject.imageUrl
+                                imageDiv.append(productImage);
+                            }
+
+                        }
+                        productItem.append(imageDiv);
+                    })
+
+                wishlistButton.classList.add('wishlist-button');
+                wishlistButton.textContent = 'Add to Wishlist';
+                wishlistButton.onclick = () => addToWishlist(product.id);
+
+                // Show out of stock if amount is 0, else show amount
+                product.amount > 0 ? productAmount.innerText = "amount: " + product.amount : productAmount.innerText = "out of stock";
+
+                productItem.append(productImg, productTitle, productSize, productPrice, productAmount, wishlistButton);
+                productGrid.append(productItem);
+            }
+            mainContentContainer.append(productGrid);
+        })
 }
 
 
@@ -99,11 +109,11 @@ async function addToWishlist(productId) {
 async function getProductsInCategory(category) {
     const response = await getRequest(`/categories/${category}/products`)
     const data = await response.json();
-    
+
     return data;
 }
 
-async function getImages(productId){
+async function getImages(productId) {
     const response = await getRequest(`/products/${productId}/images`);
     const data = await response.json();
 
