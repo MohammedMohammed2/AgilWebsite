@@ -117,6 +117,25 @@ async function addToWishlist(productId) {
 }
 
 
+function changeLightboxPictures(imageList) {
+    const thumbnailContainer = document.getElementById("thumbnail-container");
+    thumbnailContainer.innerHTML = "";
+
+    for (const key in imageList) {
+        const imageObject = imageList[key];
+        const img = document.createElement("img");
+        img.src = imageObject.imageUrl;
+        if (imageObject.isPrimary) {
+            img.classList = "thumbnail active";
+        }
+        else {
+            img.className = "thumbnail"
+        }
+
+        thumbnailContainer.append(img);
+    }
+}
+
 async function getProductsInCategory(category) {
     const response = await getRequest(`/categories/${category}/products`)
     const data = await response.json();
