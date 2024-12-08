@@ -4,148 +4,157 @@ export async function createCategoryPage(event, mainContentContainer) {
     const category = event.target.textContent;
 
     mainContentContainer.innerHTML = "";
-    const newContainer = document.createElement("div")
-    newContainer.classList.add("featured-products")
+    const newContainer = document.createElement("div");
+    newContainer.classList.add("featured-products");
 
     const title = document.createElement("h2");
     title.textContent = category;
     newContainer.append(title);
     mainContentContainer.insertBefore(newContainer, null);
-    const productGrid = document.createElement("div")
-    productGrid.classList.add("product-grid")
+
+    const productGrid = document.createElement("div");
+    productGrid.classList.add("product-grid");
 
     getProductsInCategory(category)
         .then(async (productsList) => {
-            for (const key in productsList) {
-                console.log(productsList);
-                const product = productsList[key];
-                console.log("product")
-                console.log(product.imageOne);
-
-
-                const productItem = document.createElement("div")
+            for (const product of productsList) {
+                const productItem = document.createElement("div");
                 const productImg = document.createElement("img");
                 const productTitle = document.createElement("p");
                 const productSize = document.createElement("p");
                 const productPrice = document.createElement("p");
                 const productAmount = document.createElement("p");
-                const imageDiv = document.createElement("div");
-                const wishlistButton = document.createElement('button');
+                const wishlistButton = document.createElement("button");
 
-                productItem.classList.add("product-item")
-                // imageDiv.setAttribute("data-images")
+                productItem.classList.add("product-item");
 
-                wishlistButton.classList.add('wishlist-button');
-                wishlistButton.textContent = 'Add to Wishlist';
+                wishlistButton.classList.add("wishlist-button");
+                wishlistButton.textContent = "Add to Wishlist";
                 wishlistButton.onclick = () => addToWishlist(product.id);
 
-
                 // Show out of stock if amount is 0, else show amount
-                product.amount > 0 ? productAmount.innerText = "amount: " + product.amount : productAmount.innerText = "out of stock";
+                product.amount > 0
+                    ? (productAmount.innerText = `Amount: ${product.amount}`)
+                    : (productAmount.innerText = "Out of stock");
+
                 productTitle.innerText = product.name;
-                productSize.innerText = "size: " + product.size;
-                productPrice.innerText = "price:" + product.price + " kr";
+                productSize.innerText = `Size: ${product.size}`;
+                productPrice.innerText = `Price: ${product.price} kr`;
 
-                // Get a list of images, loop through and add elements for each image
-                let imageAttribute = "";
-                const imageList = getImages(product.id)
-                    .then((imageList) => {
-                        for (const key in imageList) {
-                            const imageObject = imageList[key];
-                            imageAttribute += imageObject.imageUrl + ",";
-                            if (imageObject.isPrimary) {
-                                productImg.src = imageObject.imageUrl
-                                productImg.setAttribute("id", "primaryImage")
-                            }
-                            else {
-                                const productImage = document.createElement("img");
-                                productImage.src = imageObject.imageUrl
-                                imageDiv.append(productImage);
-                            }
-
+                // Fetch and handle images
+                const imageUrls = [];
+                await getImages(product.id).then((imageList) => {
+                    for (const image of imageList) {
+                        if (image.isPrimary) {
+                            productImg.src = image.imageUrl;
+                            productImg.alt = product.name;
                         }
-                        console.log(imageAttribute)
-                        productItem.setAttribute("data-images", imageAttribute);
-                        productItem.append(imageDiv);
-                    });
+                        imageUrls.push(image.imageUrl);
+                    }
+                });
 
+                productItem.setAttribute("data-images", imageUrls.join(","));
 
-                //changeLightboxPictures(imageList);
+                // Attach event listener for opening the lightbox
+                productItem.onclick = () => openLightbox(imageUrls);
 
-
-
-
-                wishlistButton.classList.add('wishlist-button');
-                wishlistButton.textContent = 'Add to Wishlist';
-                wishlistButton.onclick = () => addToWishlist(product.id);
-
-                // Show out of stock if amount is 0, else show amount
-                product.amount > 0 ? productAmount.innerText = "amount: " + product.amount : productAmount.innerText = "out of stock";
-
-                productItem.append(productImg, productTitle, productSize, productPrice, productAmount, wishlistButton);
+                productItem.append(
+                    productImg,
+                    productTitle,
+                    productSize,
+                    productPrice,
+                    productAmount,
+                    wishlistButton
+                );
                 productGrid.append(productItem);
             }
             mainContentContainer.append(productGrid);
-        })
+        });
 }
 
+// Function to handle the lightbox
+function openLightbox(images) {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxContent = document.getElementById("lightbox-content");
+    const thumbnailContainer = document.getElementById("thumbnail-container");
+
+    let currentIndex = 0;
+
+    // Clear existing thumbnails
+    thumbnailContainer.innerHTML = "";
+
+    // Populate lightbox with images
+    images.forEach((url, index) => {
+        const thumbnail = document.createElement("img");
+        thumbnail.src = url;
+        thumbnail.className = "thumbnail";
+        if (index === 0) {
+            thumbnail.classList.add("active");
+        }
+
+        thumbnail.onclick = () => {
+            currentIndex = index;
+            updateLightboxContent();
+        };
+
+        thumbnailContainer.append(thumbnail);
+    });
+
+    const updateLightboxContent = () => {
+        lightboxContent.src = images[currentIndex];
+        document.querySelectorAll(".thumbnail").forEach((thumb, idx) => {
+            thumb.classList.toggle("active", idx === currentIndex);
+        });
+    };
+
+    document.getElementById("next").onclick = () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateLightboxContent();
+    };
+
+    document.getElementById("prev").onclick = () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateLightboxContent();
+    };
+
+    document.querySelector(".close").onclick = () => {
+        lightbox.style.display = "none";
+    };
+
+    lightbox.style.display = "flex";
+    updateLightboxContent();
+}
 
 // Function to handle adding the product to the wishlist
 async function addToWishlist(productId) {
     try {
-        const response = await fetch('/addToWishList', {
-            method: 'POST',
+        const response = await fetch("/addToWishList", {
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify({ productId }) // Send the productId in the request body
+            body: JSON.stringify({ productId }),
         });
 
-        // Parse the response as JSON
         const result = await response.json();
 
         if (!response.ok) {
-            throw new Error(result.message || 'Failed to add product to wishlist');
+            throw new Error(result.message || "Failed to add product to wishlist");
         }
 
-        // Display success message
         alert(result.message);
     } catch (error) {
         console.error("Failed to add to wishlist:", error);
-        alert(error.message);  // Display error message from the backend
-    }
-}
-
-
-function changeLightboxPictures(imageList) {
-    const thumbnailContainer = document.getElementById("thumbnail-container");
-    thumbnailContainer.innerHTML = "";
-
-    for (const key in imageList) {
-        const imageObject = imageList[key];
-        const img = document.createElement("img");
-        img.src = imageObject.imageUrl;
-        if (imageObject.isPrimary) {
-            img.classList = "thumbnail active";
-        }
-        else {
-            img.className = "thumbnail"
-        }
-
-        thumbnailContainer.append(img);
+        alert(error.message); // Display error message from the backend
     }
 }
 
 async function getProductsInCategory(category) {
-    const response = await getRequest(`/categories/${category}/products`)
-    const data = await response.json();
-
-    return data;
+    const response = await getRequest(`/categories/${category}/products`);
+    return response.json();
 }
 
 async function getImages(productId) {
     const response = await getRequest(`/products/${productId}/images`);
-    const data = await response.json();
-
-    return data;
+    return response.json();
 }
