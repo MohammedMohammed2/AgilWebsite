@@ -68,12 +68,13 @@ function renderSearchResults(products) {
     // Clear any existing content in the main content area
     mainContent.innerHTML = '';
 
+    const productGrid = document.createElement('div');
+    productGrid.classList.add('product-grid');
+
     // Loop through each product and create its HTML structure
     products.forEach(product => {
         // Create a div to hold the product information
         const productItem = document.createElement('div');
-        const productGrid = document.createElement('div');
-        productGrid.classList.add('product-grid');
         productItem.classList.add('product-item');
         productItem.setAttribute('data-id', product.id); // Add unique identifier to avoid duplicates
 
@@ -110,8 +111,8 @@ function renderSearchResults(products) {
 
         // Append the product item to the main content area
         productGrid.appendChild(productItem);
-        mainContent.appendChild(productGrid);
     });
+    mainContent.appendChild(productGrid);
 }
 
 // Function to render a "No Results" message if no products are found
